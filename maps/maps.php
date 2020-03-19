@@ -1,8 +1,5 @@
-<?php 
-/**
-*      script de leafMaps 
- */
 
-
- /* action si un marqueur de leafMaps est cliqué*/
- ?>
+<div id="mapid"><br><br>
+Affichage de la map leaft
+<br><br>
+</div>

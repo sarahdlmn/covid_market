@@ -1,12 +1,6 @@
 </body>
 <footer>
-<?php
-
-/* le lien de connexion ? ici ou ailleur vers la page de connexion */
-
-/* script perso au cas ou */
-
-?>
+<a name="" id="" class="btn btn-primary" href="./dashboard/connexion/connexion.php" role="button">Magasin, se connecter</a>
 </footer>
 
 </html>
