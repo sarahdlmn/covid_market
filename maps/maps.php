@@ -1,15 +1,14 @@
 <section class="row">
     <?php
-    $marqueur = null;
-    if(!empty($_POST['test'])){
-       if( $marqueur == 1 ){
-           $marqueur = null;
-        }else{
-        $marqueur=1;
-        }
+    $marqueur=false;
+    if(!empty($_POST['vrai'])){
+           $marqueur = true;
+    }
+    if(!empty($_POST['faux'])){
+        $marqueur = false;
     }
 
-    if ( $marqueur != null){
+    if ($marqueur){
         echo '<div class="col-6">';
         include 'maps-side.php';
         echo '</div>';
@@ -21,7 +20,8 @@
 Affichage de la map leaft 
 <br>
 <form action="#" method="post">
-<input type="submit" name="test" value="Marqueur">
+<input type="submit" name="vrai" value="Avec Marqueur"><br>
+<input type="submit" name="faux" value="Sans Marqueur">
 </form>
 </div>
 </section>

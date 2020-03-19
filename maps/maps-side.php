@@ -8,10 +8,10 @@
     Horraire d'ouverture
 </div>
 <div>
-    Commentaires
-    ..
-    ..
-    ..
-    ..
-    ..
+    Commentaires <br>
+    .. <br>
+    .. <br>
+    .. <br>
+    .. <br>
+    .. <br>
 </div>
