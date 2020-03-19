@@ -1,0 +1,97 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<?php
+
+    define ( 'LOGIN', 'administrateur' );
+    define ( 'PASS', 'mdp' );
+
+    if( !empty( $_POST ) ) {
+
+        $identifiant    = ( !empty( $_POST['identifiant'] ) ) ? $_POST['identifiant'] : '' ;
+        $password       = ( !empty( $_POST['password'] ) ) ? $_POST['password'] : '' ;
+        $stay_connected = ( !empty( $_POST['session'] ) ) ? $_POST['session'] : '' ;
+
+          
+
+        $bdd = new PDO('mysql:host=localhost;dbname=covid_market', 'root', '' );
+
+        if( $bdd ) {
+
+            $sql = "SELECT count(*) AS nombre FROM membres WHERE (identifiant = '$identifiant' OR mail='$identifiant') AND (mdp = '$password') ";
+
+            $resultat = $bdd->query( $sql );
+
+            if( $resultat ) {
+
+                $membre = $resultat->fetchColumn();
+
+                if( $membre != 1 ) {
+                    $error_message = 'Indentifiant/mot de passe incorrects';
+                    $success=false;
+                } else {
+                    $success=true;
+                    $password = '';
+                } 
+                $sql = "INSERT INTO log (login, mdp, success, date_tentative, ip) VALUES (:login, :mdp, :success, :date_tentative, :ip)";
+
+                $requete = $bdd->prepare( $sql );
+                
+
+                $requete->execute([
+                    'login'             => $identifiant,
+                    'mdp'               => $password,
+                    'success'           => $success,
+                    'date_tentative'    => date( 'Y-m-j H:i:s' ),
+                    'ip'                => $_SERVER['REMOTE_ADDR']
+                ]);
+
+                if( empty( $error_message ) ) {
+                  
+                    session_start();
+                    $_SESSION['identifiant'] = $identifiant;
+                    $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+                    header('Location: ./covid_market.php');
+                }
+
+            }
+
+        }
+?>
+<?php require './template-parts/header.php'; ?>
+
+<div id="page">
+    <div class="content">
+        <section class="fomulaire">
+
+            <form action="" method="post">
+
+            <?php 
+            if( !empty( $error_message ) ) { ?>
+                <div class="error-message"> <?php echo $error_message; ?></div>
+            <?php }?>
+
+
+            <label for="identifiant">
+                <input type="text" name="identifiant" placeholder="Identifiant"/>
+            </label>
+
+            <label for="mdp">
+                <input type="password" name="password" placeholder="Mot de passe"/>
+            </label>
+
+            <label for="session"> Rester connecté
+                <input type="checkbox" name="sesion" id="session"/>
+            </label>
+
+            <!-- <input type="submit" name="connexion" value="connexion" id=""/> -->
+
+            <button type="button" class="btn btn-success btn-lg btn-block">Connexion</button>
+
+            </form>
+
+        </section>
+    </div>
+
+</div>
+
+<?php include './template-parts/footer.php'; ?>
