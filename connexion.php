@@ -9,13 +9,17 @@
         <h1 >CovidMarket</h1>
     </header>
 
-<div id="page">
-    <div>
-        <section class="fomulaire">
+<div id="page" class="d-flex justify-content-center">
+    <div class="content">
+        <section>
 
-            <div  class="text-success d-flex justify-content-center">
-                <h2>Formulaire de connexion</h2>
-            </div>
+           
+            <h2 class="text-success col align-self-center">Formulaire de connexion</h2>
+            
+        </section>
+    </div>
+</div>
+
 <?php
 
 if ( !empty( $_POST ) ) {
@@ -70,6 +74,7 @@ if ( !empty( $_POST ) ) {
 }
 
 ?>
+
 <div id="main">
     <div id="box">
         <?php 
@@ -80,17 +85,17 @@ if ( !empty( $_POST ) ) {
         <form action="" method="post" enctype="multipart/form-data">
 
             <div class="d-flex justify-content-center">
-                <input type="text" id="identifiant" name="identifiant" placeholder="identifiant"></br>
+                <label><input type="text" id="identifiant" name="identifiant" placeholder="identifiant" class="alert alert-success" role="alert"></label></br>
             </div>
 
             <div class="d-flex justify-content-center">
-                <input type="password" name="mdp" id="mdp" placeholder="mot de passe"></br>
+                <label><input type="password" name="mdp" id="mdp" placeholder="mot de passe" class="alert alert-success" role="alert"></label></br>
             </div>
 
             <div class="d-flex justify-content-center">
-                <input type="checkbox" name="session" id="session" value="session" /> Rester connecté<br />
+                <label><input type="checkbox" name="session" id="session" value="session" class="alert alert-success" role="alert" /> Rester connecté</label></br>
             </div>
-            
+
             <div class="d-flex justify-content-center">
                 <input type="submit" name="connexion" id="connexion" value="connexion" class="btn btn-success">
             </div>
