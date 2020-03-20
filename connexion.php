@@ -100,5 +100,6 @@ if ( !empty( $_POST ) ) {
                 <input type="submit" name="connexion" id="connexion" value="connexion" class="btn btn-success">
             </div>
         </form>
+        
     </div>
 </div>

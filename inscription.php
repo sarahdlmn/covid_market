@@ -172,5 +172,6 @@ if ( !empty( $resultat ) ) {
         <div class="d-flex justify-content-center">
             <label><input type='submit' name='validation' value='Valider' id='' class="btn btn-success" /></label><br>
         </div>
+        
     </form>
 </div>
