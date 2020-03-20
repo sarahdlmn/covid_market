@@ -7,4 +7,4 @@ header ('location: ./connexion.php');
 
 ?>
 
-<?php include './template-parts/footer.php'; ?>
+<?php include '.footer.php'; ?>
