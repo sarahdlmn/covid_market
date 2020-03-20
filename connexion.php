@@ -10,14 +10,12 @@
         $identifiant    = ( !empty( $_POST['identifiant'] ) ) ? $_POST['identifiant'] : '' ;
         $password       = ( !empty( $_POST['password'] ) ) ? $_POST['password'] : '' ;
         $stay_connected = ( !empty( $_POST['session'] ) ) ? $_POST['session'] : '' ;
-
-          
-
+     
         $bdd = new PDO('mysql:host=localhost;dbname=covid_market', 'root', '' );
 
         if( $bdd ) {
 
-            $sql = "SELECT count(*) AS nombre FROM membres WHERE (identifiant = '$identifiant' OR mail='$identifiant') AND (mdp = '$password') ";
+            $sql = "SELECT count(*) AS nombre FROM magasin WHERE (identifiant = '$identifiant' AND password = '$password') ";
 
             $resultat = $bdd->query( $sql );
 
@@ -32,25 +30,12 @@
                     $success=true;
                     $password = '';
                 } 
-                $sql = "INSERT INTO log (login, mdp, success, date_tentative, ip) VALUES (:login, :mdp, :success, :date_tentative, :ip)";
-
-                $requete = $bdd->prepare( $sql );
-                
-
-                $requete->execute([
-                    'login'             => $identifiant,
-                    'mdp'               => $password,
-                    'success'           => $success,
-                    'date_tentative'    => date( 'Y-m-j H:i:s' ),
-                    'ip'                => $_SERVER['REMOTE_ADDR']
-                ]);
-
                 if( empty( $error_message ) ) {
                   
                     session_start();
                     $_SESSION['identifiant'] = $identifiant;
                     $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
-                    header('Location: ./covid_market.php');
+                    header('Location: ../dashboard.php');
                 }
 
             }
@@ -79,19 +64,14 @@
                 <input type="password" name="password" placeholder="Mot de passe"/>
             </label>
 
-            <label for="session"> Rester connecté
+             <!-- <label for="session"> Rester connecté
                 <input type="checkbox" name="sesion" id="session"/>
-            </label>
+            </label> --> 
 
             <!-- <input type="submit" name="connexion" value="connexion" id=""/> -->
 
             <button type="button" class="btn btn-success btn-lg btn-block">Connexion</button>
-
             </form>
-
         </section>
     </div>
-
 </div>
-
-<?php include './template-parts/footer.php'; ?>
