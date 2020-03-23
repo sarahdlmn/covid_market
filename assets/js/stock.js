@@ -2,13 +2,9 @@ $(function () {
     $('#category').on('change', function () {
         $.get('../REST/bdd_requete.php', "id=" + this.value, function (data) {
             var myArray = JSON.parse(data);
-            console.log(myArray);
-            if (myArray != null) {
-               for (i = 0; i < myArray.length; i++) {
-                  $('#produit_ajax').html('<tr><td scope="row">produit' +/*+ myArray[i].nom_produit +*/'</td><td>43254' + /*+ myArray[i].quantite +*/ '</td></tr>');
-                }
+            for (i = 0; i < myArray.length; i++) {
+                $('#produit_ajax').html('<tr><td scope="row">produit' +/*+ myArray[i].produit +*/'</td><td>43254' + /*+ myArray[i].quantite +*/ '</td></tr>');
             }
         });
     });
 });
-
