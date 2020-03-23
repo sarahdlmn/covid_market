@@ -1,17 +1,13 @@
 
 <?php
 
-define ( 'LOGIN', 'administrateur' );
-define ( 'PASS', 'mdp' );
+if( !empty( $_GET ) ) {
 
-if( !empty( $_POST ) ) {
+    $identifiant    = ( !empty( $_GET['identifiant'] ) ) ? $_GET['identifiant'] : '' ;
+    $password       = ( !empty( $_GET['password'] ) ) ? $_GET['password'] : '' ;
 
-    $identifiant    = ( !empty( $_POST['identifiant'] ) ) ? $_POST['identifiant'] : '' ;
-    $password       = ( !empty( $_POST['password'] ) ) ? $_POST['password'] : '' ;
  
-    $bdd = new PDO('mysql:host=localhost;dbname=covid_market', 'root', '' );
-
-    if( $bdd ) {
+  require '../pdo_connexion.php';
 
         $sql = "SELECT count(*) AS nombre FROM magasin WHERE (identifiant = '$identifiant' AND password = '$password') ";
 
@@ -29,22 +25,21 @@ if( !empty( $_POST ) ) {
                 $password = '';
             } 
             if( empty( $error_message ) ) {
-              
                 session_start();
                 $_SESSION['identifiant'] = $identifiant;
                 header('Location: ../dashboard.php');
             }
 
         }
-
-    }
 }
 ?>
 <div id="page">
 <div class="content">
     <section class="fomulaire">
 
-        <form action="" method="post">
+
+        <form action="" method="get">
+
 
         <?php 
         if( !empty( $error_message ) ) { ?>
@@ -53,7 +48,8 @@ if( !empty( $_POST ) ) {
 
         <div class="d-flex justify-content-center">
             <label for="identifiant">
-                <input type="text" name="identifiant" placeholder="Identifiant" class="alert alert-success" role="alert"/>
+
+                <input type="text" name="identifiant" placeholder="E-Mail" class="alert alert-success" role="alert"/>
             </label>
         </div>
 
@@ -63,7 +59,7 @@ if( !empty( $_POST ) ) {
             </label>
         </div>
         <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-success">Connexion</button>
+            <button type="submit" class="btn btn-success">Connexion</button>
         </div>
         </form>
     </section>
