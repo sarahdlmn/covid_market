@@ -20,9 +20,9 @@ $sql = "SELECT * FROM categorie";
     var_dump($resultat);
     if ( !empty( $resultat ) ) {
         while ( $ligne = $resultat->fetch( PDO::FETCH_ASSOC ) ) {
-            echo '<option  value="'.$ligne["id_categorie"].'">'.$ligne["nom_categorie"].'</option>' 
-          } 
-     }     
+            echo '<option  value="'.$ligne["id_categorie"].'">'.$ligne["nom_categorie"].'</option>';
+          }
+     }   
 ?>
 
 <div>
