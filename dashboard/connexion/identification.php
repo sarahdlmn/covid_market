@@ -6,8 +6,9 @@ define ( 'PASS', 'mdp' );
 
 if( !empty( $_GET ) ) {
 
-    $identifiant    = ( !empty( $_GET['identifiant'] ) ) ? $GET['identifiant'] : '' ;
-    $password       = ( !empty( $GET['password'] ) ) ? $GET['password'] : '' ;
+    $identifiant    = ( !empty( $_GET['identifiant'] ) ) ? $_GET['identifiant'] : '' ;
+    $password       = ( !empty( $_GET['password'] ) ) ? $_GET['password'] : '' ;
+
  
   require '../pdo_connexion.php';
 
@@ -44,6 +45,7 @@ if( !empty( $_GET ) ) {
 <div class="content">
     <section class="fomulaire">
 
+
         <form action="" method="get">
 
         <?php 
@@ -53,6 +55,7 @@ if( !empty( $_GET ) ) {
 
         <div class="d-flex justify-content-center">
             <label for="identifiant">
+
                 <input type="text" name="identifiant" placeholder="Mail" class="alert alert-success" role="alert"/>
             </label>
         </div>
