@@ -1,29 +1,7 @@
- <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    </head>
-    
-    <header class="p-3 mb-2 bg-dark text-white">
-        <h1>CovidMarket</h1>
-    </header>
-
-<div id="page" class="d-flex justify-content-center">
-
-    <div class="content">
-        <section>
-
-            <h2 class="text-success col align-self-center">Formulaire d'inscription</h2>
-
-		</section>
-	</div>
-
-</div>
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <?php
-$bdd = new PDO( 'mysql:host=qnyjgz2k.epizy.com;dbname=epiz_25324985_recyclune', 'epiz_25324985', 'WfQdbXsqySsij' );
+$bdd = new PDO('mysql:host=localhost;dbname=covid_market', 'root', '' );
 
 if ( !empty( $_POST['name'] ) ) die( 'expulse robot' );
 
@@ -39,22 +17,18 @@ if ( !empty( $resultat ) ) {
     $membre = $resultat->fetch();
     if ( !empty( $membre ) ) {
         $identifiant = $membre['identifiant'];
-        $nom = $membre['nom'];
-        $prenom = $membre['prenom'];
         $mail = $membre['mail'];
         $mdp = $membre['mdp'];
     }
 
     if ( !empty( $_POST ) ) {
         $identifiant = isset( $_POST['identifiant'] ) ? $_POST['identifiant'] : '' ;
-        $nom = isset( $_POST['nom'] ) ? $_POST['nom'] : '' ;
-        $prenom = isset( $_POST['prenom'] ) ? $_POST['prenom'] : '';
         $mail = isset( $_POST['mail'] ) ? $_POST['mail'] : '';
         $pass = isset( $_POST['pass'] ) ? $_POST['pass'] : '';
         $pass2 = isset( $_POST['pass2'] ) ? $_POST['pass2'] : '';
         if ( $pass == $pass2 ) {
             if ( !empty( $nom ) && !empty( $prenom ) && !empty( $mail ) && !empty( $pass ) ) {
-                $sql = "UPDATE `membres` SET `identifiant`='$identifiant',`nom`='$nom',`prenom`='$prenom',`mail`='$mail',`mdp`='$pass',`role`='membre' WHERE (identifiant='$id' OR mail='$id' )";
+                $sql = "UPDATE `membres` SET `identifiant`='$identifiant', `mail`='$mail',`mdp`='$pass',`role`='magasin' WHERE (identifiant='$id' OR mail='$id' )";
                 $resultat = $bdd->exec( $sql );
                 if ( !empty( $resultat ) ) {
                     echo 'udpate ok';
@@ -75,7 +49,7 @@ if ( !empty( $resultat ) ) {
 <div>
     <form id='form' action='' method='post'>
         <?php echo !empty( $success_msg ) ? $success_msg : ( !empty( $msg_error ) ? $msg_error : '' );?>
-        <input type='hidden' name='name' id='name' value='' placeholder='Votre nom' />
+        <input type='hidden' name='name' id='name' value='' placeholder='Magasin' />
 
         <?php echo !empty( $champs_obligatoire ) ? $champs_obligatoire : '' ;?>
         <br/>
@@ -83,16 +57,6 @@ if ( !empty( $resultat ) ) {
         <div class="d-flex justify-content-center">
             <label><input type='text' name='identifiant' id='nom' value='' class="alert alert-success" role="alert"
                     placeholder='Votre identifiant' /><br/></label>
-        </div>
-
-        <div class="d-flex justify-content-center">
-            <label><input type='text' name='nom' id='nom' value='' class="alert alert-success" role="alert"
-                    placeholder='Votre nom' /><br/></label>
-        </div>
-
-        <div class="d-flex justify-content-center">
-            <label><input type='text' name='prenom' id='prenom' value='' class="alert alert-success" role="alert"
-                    placeholder='Votre prénom' /></label><br>
         </div>
 
         <div class="d-flex justify-content-center">   
