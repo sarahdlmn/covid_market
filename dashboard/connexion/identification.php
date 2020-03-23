@@ -55,7 +55,7 @@ if( !empty( $_GET ) ) {
             </label>
         </div>
         <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-success">Connexion</button>
+            <button type="submit" class="btn btn-success">Connexion</button>
         </div>
         </form>
     </section>
