@@ -10,7 +10,7 @@
         <script src="../assets/js/stock.js"></script>
 
 <form method="POST" action="#">
-  <select id="category">
+  <select id="category" class="form-control">
   
   <?php
 
@@ -45,6 +45,6 @@ $sql = "SELECT * FROM categorie";
               </div></td></tr>
               </tbody>
             </table>
-            <input type="submit" name="" value="Enregistrer" />
+            <input type="submit" class="btn btn-success" name="" value="Enregistrer" />
 </div>
 </form>
