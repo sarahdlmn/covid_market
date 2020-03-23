@@ -12,11 +12,8 @@
 
 <form method="POST" action="#">
   <select id="category" class="form-control">
-  
   <?php
-
 require './pdo_connexion.php';
-
 // remplissage du select avec requete sql
 $sql = "SELECT * FROM categorie";
     $resultat = $bdd->query( $sql );
