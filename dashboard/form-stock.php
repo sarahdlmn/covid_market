@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
@@ -10,12 +11,9 @@
         <script src="../assets/js/stock.js"></script>
 
 <form method="POST" action="#">
-  <select id="category">
-  
+  <select id="category" class="form-control">
   <?php
-
 require './pdo_connexion.php';
-
 // remplissage du select avec requete sql
 $sql = "SELECT * FROM categorie";
     $resultat = $bdd->query( $sql );
@@ -27,7 +25,6 @@ $sql = "SELECT * FROM categorie";
      }   
 ?>
   </select>
-
 <div>
             <table class="table">
               <thead>
@@ -37,14 +34,14 @@ $sql = "SELECT * FROM categorie";
                 </tr>
               </thead>
               <tbody id="produit_ajax">
-                 <!-- modification du dom par jquery & ajax                -->
+                 <!-- modification du dom par jquery & ajax  -->
               <tr><td scope="row"><label for="">produit Test</label> </td><td><div class="form-group">
                 <input type="number" min="0"
-                  class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                <small id="helpId" class="form-text text-muted"></small>
-              </div></td></tr>
+                  class="form-control" name="" id="">
+              </div>
+              </td></tr>
               </tbody>
             </table>
-            <input type="submit" name="" value="Enregistrer" />
+            <a name="" id="" class="btn btn-success" href="./dashboard.php" role="button">Retour menu</a>
 </div>
 </form>
