@@ -12,7 +12,7 @@
   
   <?php
 
-$bdd = new PDO('mysql:host=localhost; dbname=covid_market', 'root', '' );
+require './pdo_connexion.php';
 
 // remplissage du select avec requete sql
 $sql = "SELECT * FROM categorie";
