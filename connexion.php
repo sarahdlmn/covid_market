@@ -9,7 +9,6 @@
 
         $identifiant    = ( !empty( $_POST['identifiant'] ) ) ? $_POST['identifiant'] : '' ;
         $password       = ( !empty( $_POST['password'] ) ) ? $_POST['password'] : '' ;
-        $stay_connected = ( !empty( $_POST['session'] ) ) ? $_POST['session'] : '' ;
      
         $bdd = new PDO('mysql:host=localhost;dbname=covid_market', 'root', '' );
 
@@ -34,7 +33,6 @@
                   
                     session_start();
                     $_SESSION['identifiant'] = $identifiant;
-                    $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
                     header('Location: ../dashboard.php');
                 }
 
