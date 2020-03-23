@@ -49,7 +49,7 @@ if( !empty( $_GET ) ) {
         <div class="d-flex justify-content-center">
             <label for="identifiant">
 
-                <input type="text" name="identifiant" placeholder="Mail" class="alert alert-success" role="alert"/>
+                <input type="text" name="identifiant" placeholder="E-Mail" class="alert alert-success" role="alert"/>
             </label>
         </div>
 
