@@ -19,10 +19,10 @@
    
 </header>
 
-<body>
+<body >
 
-<div id="dashboard">
-	
+<div id="dashboard" class="text-center"><br>
+	<h2>Gestion de votre magasin</h2>
 	<?php
 
 		if( isset( $_GET['dashboard'] ) ) {
@@ -41,17 +41,16 @@
 
 	?>
 
-</div>
 
+<br>
 <button type="button" class="btn btn-outline-success"><a href="./dashboard.php?dashboard=magasin">Magasin</a></button>
 <button type="button" class="btn btn-outline-success"><a href="./dashboard.php?dashboard=stock">Stock</a></button>
+<br><br>
 
-
+</div>
 </body>
-<footer>
-
-<h3><p>Covid Market</p></h3>
-
+<footer class="ml-2">
+<button type="button" class="btn btn-outline-success"><a href="./connexion/deconnexion.php?dashboard=stock">Déconnexion</a></button>
 </footer>
 
 </html>
