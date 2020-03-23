@@ -45,6 +45,6 @@ $sql = "SELECT * FROM categorie";
               </td></tr>
               </tbody>
             </table>
-            <input type="submit" class="btn btn-success" name="" value="Enregistrer" />
+            <a name="" id="" class="btn btn-success" href="./dashboard.php" role="button">Retour menu</a>
 </div>
 </form>
