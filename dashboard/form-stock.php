@@ -41,9 +41,9 @@ $sql = "SELECT * FROM categorie";
 
               <tr><td scope="row"><label for="">produit Test</label> </td><td><div class="form-group">
                 <input type="number" min="0"
-                  class="form-control" name="" id="" aria-describedby="helpId" placeholder="">
-                <small id="helpId" class="form-text text-muted"></small>
-              </div></td></tr>
+                  class="form-control" name="" id="">
+              </div>
+              </td></tr>
 
               </tbody>
             </table>
