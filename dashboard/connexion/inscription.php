@@ -41,7 +41,7 @@ if ( !empty( $_POST['mail'] ) ) {
 ?>
 
 <div>
-    <form id='form' action='' method='POST'>
+    <form id='form' action='#' method='post'>
         <label>
         <?php echo !empty( $success_msg ) ? $success_msg : ( !empty( $msg_error ) ? $msg_error : '' );?>
         </label>

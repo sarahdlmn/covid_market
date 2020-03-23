@@ -8,8 +8,6 @@ if( !empty( $_GET ) ) {
  
   require '../pdo_connexion.php';
 
-    if( $bdd ) {
-
         $sql = "SELECT count(*) AS nombre FROM magasin WHERE (identifiant = '$identifiant' AND password = '$password') ";
 
         $resultat = $bdd->query( $sql );
@@ -32,15 +30,13 @@ if( !empty( $_GET ) ) {
             }
 
         }
-
-    }
 }
 ?>
 <div id="page">
 <div class="content">
     <section class="fomulaire">
 
-        <form action="" method="GET">
+        <form action="#" method="get">
 
         <?php 
         if( !empty( $error_message ) ) { ?>
