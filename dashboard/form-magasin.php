@@ -26,8 +26,7 @@ $donnees = $reponse->fetch();
 
 
 
-<h1>Votre magasin</h1> 
-
+<h1 class="title" >Votre magasin</h1> 
 
 <br><br>
  <div>
@@ -77,18 +76,18 @@ $donnees = $reponse->fetch();
       <div class="form-group row">
         <label for="i1" class="col-sm-6 col-form-label">Commentaires : </label>
         <div class="col">
-        <textarea name="textarea" rows="2" cols="40"><?php echo $donnees['commentaires']; ?></textarea>
+        <textarea name="textarea" rows="2" id="texty" cols="40"><?php echo $donnees['commentaires']; ?></textarea>
         </div>
       </div>
     </div>
   </div>
     
   <div class="form-row">
-     <div class="col-sm-4">
+     <div class="col-sm-6">
       <div class="form-group row">
-        <label for="i1" class="col-sm-4 col-form-label">Adresse : </label>
+        <label for="i1" class="col-sm-6 col-form-label">Adresse : </label>
         <div class="col">
-        <textarea name="textarea" rows="2" cols="40"><?php echo $donnees['adresse']; ?></textarea>
+        <textarea name="textarea" rows="2" id="texty" cols="40"><?php echo $donnees['adresse']; ?></textarea>
         </div>
       </div>
     </div>
@@ -96,8 +95,10 @@ $donnees = $reponse->fetch();
 </form>
 
 
-     <a name="" id="" class="btn btn-success" href="./dashboard.php" role="button">Retour menu</a>
+     <a name="" id="form-row" class="btn btn-success" href="./dashboard.php" role="button">Retour menu</a>
 
     </form>
+
+
 
 
