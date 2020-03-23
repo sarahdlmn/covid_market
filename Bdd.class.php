@@ -6,7 +6,7 @@
 
 		protected function getPDO() {
 			if( self::$pdo === null ) {
-				self::$bdd = new PDO( 'mysql:host=qnyjgz2k.epizy.com;dbname=epiz_25324985_recyclune', 'epiz_25324985', 'WfQdbXsqySsij' );
+				self::$bdd = new PDO('mysql:host=localhost;dbname=covid_market', 'root', '' );
 			}
 			return self::$pdo;
 		}
