@@ -6,7 +6,7 @@ require '../pdo_connexion.php';
 // explustion des robot qui on rempli le champ hidden
 if ( !empty( $_POST['name'] ) ) die( 'robot' );
 
-$msg_error;
+$msg_error = null;
 if ( !empty( $_POST['mail'] ) ) {
     $mail = $_POST['mail'];
     $sql = "SELECT count(*) AS nombre FROM magasin WHERE  WHERE identifiant='$mail'";
@@ -42,7 +42,9 @@ if ( !empty( $_POST['mail'] ) ) {
 
 <div>
     <form id='form' action='' method='POST'>
+        <label>
         <?php echo !empty( $success_msg ) ? $success_msg : ( !empty( $msg_error ) ? $msg_error : '' );?>
+        </label>
         <!-- champ de detection de robot -->
         <input type='hidden' name='name' id='name' value='' placeholder='Magasin' />
 
@@ -51,7 +53,7 @@ if ( !empty( $_POST['mail'] ) ) {
 
         <div class="d-flex justify-content-center">   
             <label><input type='text' name='nom' id='nom' value='' class="alert alert-success" role="alert"
-                        placeholder='Nom de votre magasin' /><label><br/>
+                        placeholder='Inscrire votre magasin' /><label><br/>
         </div>
         <div class="d-flex justify-content-center">   
             <label><input type='text' name='mail' id='mail' value='' class="alert alert-success" role="alert"
@@ -75,7 +77,7 @@ if ( !empty( $_POST['mail'] ) ) {
         <?php echo !empty( $password_different ) ? $password_different : '' ;?>
 
         <div class="d-flex justify-content-center">
-            <label><input type='submit' name='validation' value='Valider' id='' class="btn btn-success" /></label><br>
+            <label><input type='submit' name='validation' value='Inscription' id='' class="btn btn-success" /></label><br>
         </div>
 
     </form>
