@@ -21,8 +21,8 @@ if ( !empty( $_POST['mail'] ) ) {
             $pass = isset( $_POST['pass'] ) ? $_POST['pass'] : '';
             $pass2 = isset( $_POST['pass2'] ) ? $_POST['pass2'] : '';
             if ( $pass == $pass2 ) {
-                if ( !empty( $nom ) && !empty( $prenom ) && !empty( $mail ) && !empty( $pass ) ) {
-                    $sql = "INSERT INTO `magasin`(`name`, `popup_content`, `identifiant`, `password`) VALUES ($nom,$nom,$identifiant,$pass)";
+                if ( !empty( $nom ) && !empty( $identifiant) && !empty( $pass ) ) {
+                    $sql = "INSERT INTO `magasin`(`name`, `popup_content`, `identifiant`, `password`) VALUES ('$nom','$nom','$identifiant','$pass')";
                     $resultat = $bdd->exec( $sql );
                     if ( !empty( $resultat ) ) {
                         echo 'inscription ok';
