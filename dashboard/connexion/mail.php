@@ -1,4 +1,5 @@
 <?php
+require '../pdo_inscription.php';
 
     $sujet = "Activation de votre compte utilisateur";
     $message = "Pour valider votre inscription, merci de cliquer sur le lien suivant :";
