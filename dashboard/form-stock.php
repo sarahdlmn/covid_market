@@ -34,6 +34,7 @@ $sql = "SELECT * FROM categorie";
                 </tr>
               </thead>
               <tbody id="produit_ajax">
+              <tr><td scope="row">produit test 1 </td><td>15343</td></tr>
                  <!-- modification du dom par jquery & ajax                -->
               </tbody>
             </table>
