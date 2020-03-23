@@ -7,8 +7,8 @@ require '../pdo_connexion.php';
 if ( !empty( $_POST['name'] ) ) die( 'robot' );
 
 $msg_error;
-if ( !empty( $_GET['mail'] ) ) {
-    $mail = $_GET['mail'];
+if ( !empty( $_POST['mail'] ) ) {
+    $mail = $_POST['mail'];
     $sql = "SELECT count AS nombre  FROM magasin WHERE identifiant='$mail'";
     $resultat = $bdd->query( $sql );
         if ( $resultat != 0 ) {
@@ -41,7 +41,7 @@ if ( !empty( $_GET['mail'] ) ) {
 ?>
 
 <div>
-    <form id='form' action='' method='post'>
+    <form id='form' action='' method='POST'>
         <?php echo !empty( $success_msg ) ? $success_msg : ( !empty( $msg_error ) ? $msg_error : '' );?>
         <!-- champ de detection de robot -->
         <input type='hidden' name='name' id='name' value='' placeholder='Magasin' />

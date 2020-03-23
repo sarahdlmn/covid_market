@@ -4,10 +4,10 @@
 define ( 'LOGIN', 'administrateur' );
 define ( 'PASS', 'mdp' );
 
-if( !empty( $_POST ) ) {
+if( !empty( $_GET ) ) {
 
-    $identifiant    = ( !empty( $_POST['identifiant'] ) ) ? $_POST['identifiant'] : '' ;
-    $password       = ( !empty( $_POST['password'] ) ) ? $_POST['password'] : '' ;
+    $identifiant    = ( !empty( $_GET['identifiant'] ) ) ? $_GET['identifiant'] : '' ;
+    $password       = ( !empty( $_GET['password'] ) ) ? $_GET['password'] : '' ;
  
   require '../pdo_connexion.php';
 
@@ -44,7 +44,7 @@ if( !empty( $_POST ) ) {
 <div class="content">
     <section class="fomulaire">
 
-        <form action="" method="post">
+        <form action="" method="GET">
 
         <?php 
         if( !empty( $error_message ) ) { ?>
