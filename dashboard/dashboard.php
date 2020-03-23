@@ -16,11 +16,8 @@
     </H1><div class="progress">
   <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> 
 </div>
-   
 </header>
-
 <body >
-
 <div id="dashboard" class="text-center"><br>
 	<h2>Gestion de votre magasin</h2>
 	<?php
@@ -40,13 +37,10 @@
 		}
 
 	?>
-
-
 <br>
 <button type="button" class="btn btn-outline-success"><a href="./dashboard.php?dashboard=magasin">Magasin</a></button>
 <button type="button" class="btn btn-outline-success"><a href="./dashboard.php?dashboard=stock">Stock</a></button>
 <br><br>
-
 </div>
 </body>
 <footer class="ml-2">
