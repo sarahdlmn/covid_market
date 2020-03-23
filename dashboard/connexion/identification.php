@@ -1,9 +1,6 @@
 
 <?php
 
-define ( 'LOGIN', 'administrateur' );
-define ( 'PASS', 'mdp' );
-
 if( !empty( $_GET ) ) {
 
     $identifiant    = ( !empty( $_GET['identifiant'] ) ) ? $_GET['identifiant'] : '' ;
@@ -29,7 +26,6 @@ if( !empty( $_GET ) ) {
                 $password = '';
             } 
             if( empty( $error_message ) ) {
-              
                 session_start();
                 $_SESSION['identifiant'] = $identifiant;
                 header('Location: ../dashboard.php');

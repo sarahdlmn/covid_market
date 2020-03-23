@@ -9,7 +9,7 @@ if ( !empty( $_POST['name'] ) ) die( 'robot' );
 $msg_error;
 if ( !empty( $_POST['mail'] ) ) {
     $mail = $_POST['mail'];
-    $sql = "SELECT count AS nombre  FROM magasin WHERE identifiant='$mail'";
+    $sql = "SELECT count(*) AS nombre FROM magasin WHERE  WHERE identifiant='$mail'";
     $resultat = $bdd->query( $sql );
         if ( $resultat != 0 ) {
             $msg_error = "e-mail déjà utilisé";
