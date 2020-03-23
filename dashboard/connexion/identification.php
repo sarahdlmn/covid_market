@@ -5,6 +5,7 @@ if( !empty( $_GET ) ) {
 
     $identifiant    = ( !empty( $_GET['identifiant'] ) ) ? $_GET['identifiant'] : '' ;
     $password       = ( !empty( $_GET['password'] ) ) ? $_GET['password'] : '' ;
+
  
   require '../pdo_connexion.php';
 
@@ -36,7 +37,9 @@ if( !empty( $_GET ) ) {
 <div class="content">
     <section class="fomulaire">
 
-        <form action="#" method="get">
+
+        <form action="" method="get">
+
 
         <?php 
         if( !empty( $error_message ) ) { ?>
@@ -45,7 +48,8 @@ if( !empty( $_GET ) ) {
 
         <div class="d-flex justify-content-center">
             <label for="identifiant">
-                <input type="text" name="identifiant" placeholder="Identifiant" class="alert alert-success" role="alert"/>
+
+                <input type="text" name="identifiant" placeholder="Mail" class="alert alert-success" role="alert"/>
             </label>
         </div>
 
