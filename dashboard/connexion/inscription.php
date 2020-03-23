@@ -9,9 +9,10 @@ if ( !empty( $_POST['name'] ) ) die( 'robot' );
 $msg_error = null;
 if ( !empty( $_POST['mail'] ) ) {
     $mail = $_POST['mail'];
-    $sql = "SELECT count(*) AS nombre FROM magasin WHERE  WHERE identifiant='$mail'";
+    $sql = "SELECT count(*) AS nombre FROM magasin WHERE identifiant='$mail'";
     $resultat = $bdd->query( $sql );
-        if ( $resultat != 0 ) {
+    $count = $resultat->fetchColumn();
+        if ( $count != 0 ) {
             $msg_error = "e-mail déjà utilisé";
         }
         
@@ -20,8 +21,9 @@ if ( !empty( $_POST['mail'] ) ) {
             $identifiant = isset( $_POST['mail'] ) ? $_POST['mail'] : '' ;
             $pass = isset( $_POST['pass'] ) ? $_POST['pass'] : '';
             $pass2 = isset( $_POST['pass2'] ) ? $_POST['pass2'] : '';
+           if (is_null($msg_error)){
             if ( $pass == $pass2 ) {
-                if ( !empty( $nom ) && !empty( $identifiant) && !empty( $pass ) ) {
+                if ( !empty( $nom ) && !empty( $identifiant) && !empty( $pass )) {
                     $sql = "INSERT INTO `magasin`(`name`, `popup_content`, `identifiant`, `password`) VALUES ('$nom','$nom','$identifiant','$pass')";
                     $resultat = $bdd->exec( $sql );
                     if ( !empty( $resultat ) ) {
@@ -36,6 +38,7 @@ if ( !empty( $_POST['mail'] ) ) {
             } else {
                 $password_different = 'Les mots de passe de sont différent';
             }
+        }
         }
     }
 ?>
