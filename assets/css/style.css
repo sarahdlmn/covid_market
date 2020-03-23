@@ -1,21 +1,17 @@
-#mapid { height: 500px; }
-
-
 #texty {
     color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
     text-align: center;
     }
-
 h1{ 
     text-align: center;
 }
-
 .form-row{
     margin-left: 30px;
 }
-
 #form-row{ 
     margin-left: 30px;
 }
+#mapid { height: 450px; }
+
