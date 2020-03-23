@@ -1,9 +1,6 @@
 
 <?php
 
-define ( 'LOGIN', 'administrateur' );
-define ( 'PASS', 'mdp' );
-
 if( !empty( $_GET ) ) {
 
     $identifiant    = ( !empty( $_GET['identifiant'] ) ) ? $_GET['identifiant'] : '' ;
@@ -11,8 +8,6 @@ if( !empty( $_GET ) ) {
 
  
   require '../pdo_connexion.php';
-
-    if( $bdd ) {
 
         $sql = "SELECT count(*) AS nombre FROM magasin WHERE (identifiant = '$identifiant' AND password = '$password') ";
 
@@ -30,15 +25,12 @@ if( !empty( $_GET ) ) {
                 $password = '';
             } 
             if( empty( $error_message ) ) {
-              
                 session_start();
                 $_SESSION['identifiant'] = $identifiant;
                 header('Location: ../dashboard.php');
             }
 
         }
-
-    }
 }
 ?>
 <div id="page">
@@ -47,6 +39,7 @@ if( !empty( $_GET ) ) {
 
 
         <form action="" method="get">
+
 
         <?php 
         if( !empty( $error_message ) ) { ?>
@@ -66,7 +59,7 @@ if( !empty( $_GET ) ) {
             </label>
         </div>
         <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-success">Connexion</button>
+            <button type="submit" class="btn btn-success">Connexion</button>
         </div>
         </form>
     </section>
