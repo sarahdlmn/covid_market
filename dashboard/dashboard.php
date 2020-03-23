@@ -45,6 +45,7 @@
 
 <button type="button" class="btn btn-outline-success"><a href="./dashboard.php?dashboard=magasin">Magasin</a></button>
 <button type="button" class="btn btn-outline-success"><a href="./dashboard.php?dashboard=stock">Stock</a></button>
+<button type="button" class="btn btn-outline-success"><a href="./connexion/deconnexion.php?dashboard=stock">Déconnexion</a></button>
 
 
 </body>
