@@ -21,7 +21,6 @@
    crossorigin=""></script>
 
    <link rel="stylesheet" href="./assets/css/style.css">
-   <script src="map.json"></script>
    
     <title>Covid Market</title>
 </head>
