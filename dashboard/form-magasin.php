@@ -23,53 +23,81 @@ $donnees = $reponse->fetch();
 
 ?>
 
-<div class="form-group">
+
 
 
 <h1>Votre magasin</h1> 
 
+
+<br><br>
  <div>
     <form id='form' action='' method='post'>
      
 
-
-        <div class="d-flex justify-content-center">
-        <br> <input type='text' name='nom' id='nom' value='<?php echo $donnees['name']; ?>' class="alert alert-success"
-                        placeholder='Magasin' /><br/>
+  <div class="form-row">
+  
+    <div class="col-sm-6">
+      <div class="form-group row">
+        <label for="i1" class="col-sm-6 col-form-label">Enseigne : </label>
+        <div class="col">
+        <input type='text' name='nom' id='nom' value='<?php echo $donnees['name']; ?>' class="alert alert-success"
+                        placeholder='Magasin' />
         </div>
-
-        <div class="d-flex justify-content-center">
-            <label>popupContent: <input type='text' name='popup' id='popup' value='<?php echo $donnees['popupContent']; ?>' class="alert alert-success"
-                        placeholder='' /><label><br/>
-        </div>
-
-
-        <div class="d-flex justify-content-center">
-    <label >Horaires :<input type='textarea' name='horaires' id='horaires' value='<?php echo $donnees['horraire']; ?>' class="alert alert-success" 
-                       /><label><br/></label>
+      </div>
+    </div>
+    </div>
     
+
+    <div class="form-row">
+     <div class="col-sm-6">
+      <div class="form-group row">
+        <label for="i1" class="col-sm-6 col-form-label"> Magasin : </label>
+        <div class="col">
+        <input type='text' name='popup' id='popup' value='<?php echo $donnees['popupContent']; ?>' class="alert alert-success"
+                        placeholder='' /><label>
         </div>
-
-        <div class="d-flex justify-content-center">
-            <label>Commentaires : <input type='textearea' name='comments' id='comments' value='<?php echo $donnees['commentaires']; ?>' class="alert alert-success" 
-                    placeholder='' /></label>
-            <br/>
+      </div>
+    </div>
+    </div>
+  
+    <div class="form-row">
+     <div class="col-sm-6">
+      <div class="form-group row">
+        <label for="i1" class="col-sm-6 col-form-label">Horaires d'ouverture : </label>
+        <div class="col">
+        <textarea name="textarea" rows="8" id="texty" cols="40" value=""> <?php echo $donnees['horraire']; ?></textarea>
         </div>
-
-        <div class="d-flex justify-content-center">
-            <label>Adresse : <input type='text' name='address' id='adress' value='<?php echo $donnees['adresse']; ?>' class="alert alert-success" 
-                    placeholder='' /></label>
-            <br/>
+      </div>
+    </div>
+    </div>
+  
+   
+  <div class="form-row">
+     <div class="col-sm-6">
+      <div class="form-group row">
+        <label for="i1" class="col-sm-6 col-form-label">Commentaires : </label>
+        <div class="col">
+        <textarea name="textarea" rows="2" cols="40"><?php echo $donnees['commentaires']; ?></textarea>
         </div>
+      </div>
+    </div>
+  </div>
+    
+  <div class="form-row">
+     <div class="col-sm-4">
+      <div class="form-group row">
+        <label for="i1" class="col-sm-4 col-form-label">Adresse : </label>
+        <div class="col">
+        <textarea name="textarea" rows="2" cols="40"><?php echo $donnees['adresse']; ?></textarea>
+        </div>
+      </div>
+    </div>
+    </div>
+</form>
 
 
-<br><br>
-        <a input type="button" name="" class="btn btn-success" href="./dashboard.php" role="button">Retour menu</a>
+     <a name="" id="" class="btn btn-success" href="./dashboard.php" role="button">Retour menu</a>
 
     </form>
-</div>
-
- </div>
-</form>
 
 
