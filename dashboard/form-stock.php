@@ -37,14 +37,12 @@ $sql = "SELECT * FROM categorie";
                 </tr>
               </thead>
               <tbody id="produit_ajax">
-                 <!-- modification du dom par jquery & ajax                -->
-
+                 <!-- modification du dom par jquery & ajax  -->
               <tr><td scope="row"><label for="">produit Test</label> </td><td><div class="form-group">
                 <input type="number" min="0"
                   class="form-control" name="" id="">
               </div>
               </td></tr>
-
               </tbody>
             </table>
             <input type="submit" class="btn btn-success" name="" value="Enregistrer" />
