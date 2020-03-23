@@ -17,7 +17,6 @@
 
 require './pdo_connexion.php';
 
-
 // remplissage du select avec requete sql
 $sql = "SELECT * FROM categorie";
     $resultat = $bdd->query( $sql );
