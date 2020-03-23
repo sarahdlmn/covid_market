@@ -9,6 +9,7 @@
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
         <script src="../assets/js/stock.js"></script>
+        <link rel="stylesheet" href="../assets/css/style.css">
         
         
         <form method="POST" action="#">
@@ -19,16 +20,13 @@ require './pdo_connexion.php';
 
 $reponse = $bdd->query('SELECT * FROM magasin');
 $donnees = $reponse->fetch();
-var_dump($donnees);
 
 ?>
 
 <div class="form-group">
 
 
-<h1>Magasin</h1> 
-
-
+<h1>Votre magasin</h1> 
 
  <div>
     <form id='form' action='' method='post'>
@@ -36,27 +34,30 @@ var_dump($donnees);
 
 
         <div class="d-flex justify-content-center">
-            <label>Magasin : <input type='text' name='nom' id='nom' value='<?php echo $donnees['name']; ?>' class="alert alert-success"
+        <br> <input type='text' name='nom' id='nom' value='<?php echo $donnees['name']; ?>' class="alert alert-success"
+                        placeholder='Magasin' /><br/>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <label>popupContent: <input type='text' name='popup' id='popup' value='<?php echo $donnees['popupContent']; ?>' class="alert alert-success"
                         placeholder='' /><label><br/>
         </div>
 
-        <p>popupcontent : <input type="text" id='popup' value="<?php echo $donnees['popupContent']; ?>" /></p>
-
 
         <div class="d-flex justify-content-center">
-    <label >Horaires :<input type='textarea' name='horaires' id='horaires' value='' class="alert alert-success" 
+    <label >Horaires :<input type='textarea' name='horaires' id='horaires' value='<?php echo $donnees['horraire']; ?>' class="alert alert-success" 
                        /><label><br/></label>
     
         </div>
 
         <div class="d-flex justify-content-center">
-            <label>Commentaires : <input type='textearea' name='comments' id='comments' value='' class="alert alert-success" 
+            <label>Commentaires : <input type='textearea' name='comments' id='comments' value='<?php echo $donnees['commentaires']; ?>' class="alert alert-success" 
                     placeholder='' /></label>
             <br/>
         </div>
 
         <div class="d-flex justify-content-center">
-            <label>Adresse : <input type='text' name='address' id='address' value='' class="alert alert-success" 
+            <label>Adresse : <input type='text' name='address' id='adress' value='<?php echo $donnees['adresse']; ?>' class="alert alert-success" 
                     placeholder='' /></label>
             <br/>
         </div>
