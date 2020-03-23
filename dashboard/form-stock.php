@@ -24,7 +24,8 @@ $sql = "SELECT * FROM categorie";
           }
      }   
 ?>
-
+  </select>
+</form>
 <div>
             <table class="table">
               <thead>
@@ -34,15 +35,9 @@ $sql = "SELECT * FROM categorie";
                 </tr>
               </thead>
               <tbody id="produit_ajax">
-              <tr><td scope="row">produit test 1 </td><td>15343</td></tr>
                  <!-- modification du dom par jquery & ajax                -->
+              <tr><td scope="row">produit test 1 </td><td>15343</td></tr>
               </tbody>
             </table>
             <input type="submit" name="" value="Enregistrer" />
 </div>
-
-
-
-  </select>
-</form>
-
