@@ -18,8 +18,10 @@
     }
  ?>
 
-<script src="map.json"></script>
 <script language="javascript" >
+        $.get('../REST/chargement_carte.php',function (data) {
+        var magasins = JSON.parse(data);
+
             var mymap = L.map('mapid').setView([48.6833, 6.2], 13);
 
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
