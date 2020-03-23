@@ -182,10 +182,5 @@
 
             </script>
  </div>
-<br>
-<form action="#" method="post">
-<input type="submit" name="vrai" value="Avec Marqueur"><br>
-<input type="submit" name="faux" value="Sans Marqueur">
-</form>
 </div>
 </section>
