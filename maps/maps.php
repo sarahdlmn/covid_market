@@ -18,6 +18,7 @@
     }
  ?>
 
+<script src="map.json"></script>
 <script language="javascript" >
             var mymap = L.map('mapid').setView([48.6833, 6.2], 13);
 
@@ -29,6 +30,20 @@
             zoomOffset: -1,
             accessToken: 'pk.eyJ1IjoiYWxleHljZiIsImEiOiJjazd5anZ4cGIwMnQ0M2ZwOWp5ZmM4eW05In0.5l3noRduV0z5a0XCPbTsfA'
         }).addTo(mymap);
+        function onEachFeature(feature, layer) {
+                    
+                    if (feature.properties && feature.properties.popupContent) {
+                        layer.bindPopup(feature.properties.popupContent);
+                    }
+                }
+
+                var myLayer = L.geoJSON().addTo(mymap);
+                myLayer.addData(magasins);
+                L.geoJSON(magasins, {
+                    onEachFeature: onEachFeature
+                }).addTo(mymap);
+
+
             </script>
  </div>
 <br>
