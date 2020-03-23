@@ -9,7 +9,7 @@ if( !empty( $_POST ) ) {
     $identifiant    = ( !empty( $_POST['identifiant'] ) ) ? $_POST['identifiant'] : '' ;
     $password       = ( !empty( $_POST['password'] ) ) ? $_POST['password'] : '' ;
  
-    $bdd = new PDO('mysql:host=localhost;dbname=covid_market', 'root', '' );
+  require '../pdo_connexion.php';
 
     if( $bdd ) {
 
