@@ -9,4 +9,4 @@ $(function () {
         });
     });
 });
-                $('div').html('<tr><td scope="row">' + myArray[i].nom_produit + '</td><td>' + myArray[i].quantite + '</td></tr>');sexy
+        
