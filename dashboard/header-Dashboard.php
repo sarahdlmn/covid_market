@@ -9,6 +9,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
    <link rel="stylesheet" href="./assets/css/style.css">
+   <link rel="stylesheet" href="../assets/css/style.css">
     <title>Covid Market</title>
 </head>
 <header><H1 class="col-12 text-center">
