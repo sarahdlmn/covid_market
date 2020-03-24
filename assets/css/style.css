@@ -29,17 +29,6 @@ h3{
     color: #267538;
 
 }
-#mapside{
-    float:left;
-    overflow: hidden;
-}
-/* Add padding and border to inner content
-for better animation effect */
-.mapside{
-    width: 400px;
-    padding: 10px;
-
-}
 
 #lol{
     height: 10px;
