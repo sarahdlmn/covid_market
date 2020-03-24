@@ -2,7 +2,9 @@
 function db_connexion(bool $debug=false)
 {
     // Connexion à la base de donnée.
+
     $pdo = new PDO('mysql:host=localhost:3306;dbname=covid_market;charset=utf8', 'root', '');
+
 
     // Activation du debugage de PDO.
     if ($debug === true) {

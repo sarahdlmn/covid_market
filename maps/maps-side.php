@@ -1,3 +1,4 @@
+
 <div class="container">
 <h1 class="title" >Votre magasin</h1> 
 
@@ -82,3 +83,4 @@
     </form>
 
   </div>
+
