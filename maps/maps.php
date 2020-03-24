@@ -162,9 +162,7 @@ function onEachFeature(feature, layer) {
                 L.geoJSON(magasins, {
                     onEachFeature: onEachFeature
                 }).addTo(mymap).on('click', function(e) {
-                        console.log(e.latlng);
-                        // découpage du coordonee pour passage a en url
-                        window.location.replace('./index.php');
+                       window.location.replace('./index.php?lat='+e.latlng['lat']+'&lon='+e.latlng['lng']);
 });               
             </script>
  </div>
