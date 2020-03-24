@@ -1,40 +1,14 @@
 
-<div class="container col-6" id="mapside">
+<div class="container col-12" id="mapside">
 <h1 class="title" >Votre magasin</h1> 
 
 <br><br>
  <div>
+
+ <a name="" id="" class="btn btn-primary left ml-4" href="../index.php" role="button">Retour Carte</a>
+
     <form id='form' action='' method='post'>
      
-   
-  <div class="form-row row">
-    <div class="col-sm-12  col-xs-12 col-12">
-      <div class="form-group row">
-        <label for="i1" class="col-xs-12 col-sm-12 col-12 col-form-label">Enseigne : </label>
-        <div class="row">
-        <div class="col-12">
-        <input type='text' name='nom' id='nom' value='<!--<?php echo $donnees['name']; ?>-->' class="alert alert-success"
-                        placeholder='Magasin' />
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
-   
-    
-    <div class="row">
-    <div class="form-row">
-     <div class="col-sm-12  col-12 col-xs-12">
-      <div class="form-group row">
-        <label for="i1" class="col-xs-12 col-sm-12  col-12 col-form-label"> Nom sur la carte : </label>
-        <div class="col-12">
-        <input type='text' name='popup' id='popup' value='<!-- <?php echo $donnees['popup_content']; ?> -->' class="alert alert-success"
-                        placeholder='' /><label>
-        </div>
-      </div>
-    </div>
-    </div>
-    </div>
   
     <div class="row">
     <div class="form-row">
