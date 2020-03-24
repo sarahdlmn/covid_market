@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" id="mapside">
 <h1 class="title" >Votre magasin</h1> 
 
 <br><br>
@@ -76,11 +76,6 @@
     </div>
 
 </form>
-
-
-     <a name="" id="form-row" class="btn btn-success" href="./dashboard.php" role="button">Retour menu</a>
-
-    </form>
-
-  </div>
+ </div>
+ </div>
 
