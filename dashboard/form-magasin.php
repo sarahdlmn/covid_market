@@ -34,7 +34,7 @@ $donnees = $reponse->fetch();
       <div class="form-group row">
         <label for="i1" class="col-sm-6  col-6 col-form-label"> Nom sur la carte : </label>
         <div class="col">
-        <input type='text' name='popup' id='popup' value='<?php echo $donnees['popupContent']; ?>' class="alert alert-success"
+        <input type='text' name='popup' id='popup' value='<?php echo $donnees['popup_content']; ?>' class="alert alert-success"
                         placeholder='' /><label>
         </div>
       </div>
@@ -46,7 +46,7 @@ $donnees = $reponse->fetch();
       <div class="form-group row">
         <label for="i1" class="col-sm-6 col-6 col-form-label ">Horaires d'ouverture : </label>
         <div class="col-6">
-        <textarea name="textarea" rows="8" class="texty" cols="40" value=""> <?php echo $donnees['horraire']; ?></textarea>
+        <textarea name="textarea" rows="8" class="texty" cols="40" value=""> <?php echo $donnees['horaire']; ?></textarea>
         </div>
       </div>
     </div>
