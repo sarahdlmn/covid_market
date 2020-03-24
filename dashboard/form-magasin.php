@@ -21,7 +21,7 @@ $donnees = $reponse->fetch();
         <label for="i1" class="col-xs-12 col-sm-12 col-12 col-form-label">Enseigne : </label>
         <div class="row">
         <div class="col-12">
-        <input type='text' name='nom' id='nom' value='<?php echo $donnees['name']; ?>' class="alert alert-success"
+        <input type='text' name='nom' id='nom' value='<?php echo $donnees['name']; ?>' class="alert alert-success text-center" 
                         placeholder='Magasin' />
         </div>
       </div>
@@ -36,7 +36,7 @@ $donnees = $reponse->fetch();
       <div class="form-group row">
         <label for="i1" class="col-xs-12 col-sm-12  col-12 col-form-label"> Nom sur la carte : </label>
         <div class="col-12">
-        <input type='text' name='popup' id='popup' value='<?php echo $donnees['popup_content']; ?>' class="alert alert-success"
+        <input type='text' name='popup' id='popup' value='<?php echo $donnees['popup_content']; ?>' class="alert alert-success text-center"
                         placeholder='' /><label>
         </div>
       </div>
