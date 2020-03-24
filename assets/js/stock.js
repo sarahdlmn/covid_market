@@ -1,3 +1,4 @@
+
 // function setProductStorage(nom, quantite, id_categorie)
 // {
 //     let produits = JSON.parse(localStorage.getItem('produits'));
