@@ -1,5 +1,5 @@
 
-<div class="container" id="mapside">
+<div class="container col-6" id="mapside">
 <h1 class="title" >Votre magasin</h1> 
 
 <br><br>
