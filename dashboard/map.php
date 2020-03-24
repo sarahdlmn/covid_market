@@ -21,8 +21,8 @@
 }).addTo(map);
 
 map.on('click', function(ev) {
-    console.log(ev.latlng);
-    
+    console.log(ev.latlng['lat']);
+    console.log(ev.latlng['lng']);
 });
 
 
