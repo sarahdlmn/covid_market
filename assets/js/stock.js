@@ -9,7 +9,7 @@
 //         } else {
 //             produits.push({
 //                 'nom': nom,
-//                 'qauntite': quantite,
+//                 'quantite': quantite,
 //                 'categorie': id_categorie
 //             });
 //         }
@@ -71,7 +71,7 @@ $(function () {
     // Lancement d'un évenement lors de la selection d'une categorie.
     $('#category').on('change', function () {
         // Récupération Ajax des produits liée à la catégorie.
-        $.get('http://localhost/covid_market/assets/REST/bdd_requete.php', "id=" + this.value, function (data) {
+        $.get('http://localhost/covid_market/assets/REST/bdd_requete.php', "id_categorie=" + this.value, function (data) {
             let produits = JSON.parse(data);
             // Affichage de la liste de produits.
             productRender(produits);
