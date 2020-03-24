@@ -83,6 +83,9 @@ $donnees = $reponse->fetch();
     </div>
     </div>
 
+<?php 
+require 'map.php';
+?>
 </form>
 
 

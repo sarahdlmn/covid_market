@@ -21,7 +21,8 @@
 }).addTo(map);
 
 map.on('click', function(ev) {
-    alert(ev.latlng); // ev is an event object (MouseEvent in this case)
+    console.log(ev.latlng);
+    
 });
 
 
