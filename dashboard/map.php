@@ -26,4 +26,6 @@ map.on('click', function(ev) {
 
 
 
+
+console.log(ev.latlng);
 </script>
