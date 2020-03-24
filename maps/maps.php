@@ -150,11 +150,7 @@
         "type":"Point",
         "coordinates": [6.196569,48.695001]
     }
-
-
 }
-
-
 ];
             var mymap = L.map('mapid').setView([48.6833, 6.2], 13);
 
@@ -167,19 +163,17 @@
             accessToken: 'pk.eyJ1IjoiYWxleHljZiIsImEiOiJjazd5anZ4cGIwMnQ0M2ZwOWp5ZmM4eW05In0.5l3noRduV0z5a0XCPbTsfA'
         }).addTo(mymap);
         function onEachFeature(feature, layer) {
-                    
                     if (feature.properties && feature.properties.popupContent) {
                         layer.bindPopup(feature.properties.popupContent);
                     }
                 }
-
                 var myLayer = L.geoJSON().addTo(mymap);
                 myLayer.addData(magasins);
                 L.geoJSON(magasins, {
                     onEachFeature: onEachFeature
-                }).addTo(mymap);
-
-
+                }).addTo(mymap).on('click', function(e) {
+                console.log(e.latlng);
+});               
             </script>
  </div>
 </div>
