@@ -15,3 +15,14 @@ h1{
 }
 #mapid { height: 450px; }
 
+#mapside{
+    float:left;
+    overflow: hidden;
+}
+/* Add padding and border to inner content
+for better animation effect */
+.mapside{
+    width: 400px;
+    padding: 10px;
+}
+

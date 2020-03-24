@@ -1,26 +1,13 @@
-
-<section class="row">
-    <?php
-    $marqueur=false;
-    if(!empty($_POST['vrai'])){
-           $marqueur = true;
-    }
-    if(!empty($_POST['faux'])){
-        $marqueur = false;
-    }
-
-    if ($marqueur){
-        echo '<div class="col-6">';
-        include 'maps-side.php';
-        echo '</div>';
-        echo '<div id="mapid" class="col-6">';}
-    else{
-        echo '<div id="mapid" class="col-12">';
-    }
- ?>
-
-
+<?php 
+require 'maps-side.php';
+?>
+<section class="col-12"> 
+<div id="mapid" class="col-12">
 <script language="javascript" >
+        var sidemaps = $('#mapside');
+        sidemaps.hide()
+        var hide = true;
+
     var magasins = [{
     "type":"Feature",
     "properties": {
@@ -152,29 +139,50 @@
     }
 }
 ];
-            var mymap = L.map('mapid').setView([48.6833, 6.2], 13);
+        
+var mymap = L.map('mapid').setView([48.6833, 6.2], 13);
 
-        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox/streets-v11',
-            tileSize: 512,
-            zoomOffset: -1,
-            accessToken: 'pk.eyJ1IjoiYWxleHljZiIsImEiOiJjazd5anZ4cGIwMnQ0M2ZwOWp5ZmM4eW05In0.5l3noRduV0z5a0XCPbTsfA'
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiYWxleHljZiIsImEiOiJjazd5anZ4cGIwMnQ0M2ZwOWp5ZmM4eW05In0.5l3noRduV0z5a0XCPbTsfA'
+}).addTo(mymap);
+function onEachFeature(feature, layer) {
+            
+            if (feature.properties && feature.properties.popupContent) {
+                layer.bindPopup(feature.properties.popupContent);
+            }
+        }
+
+        var myLayer = L.geoJSON().addTo(mymap);
+        myLayer.addData(magasins);
+        L.geoJSON(magasins, {
+            onEachFeature: onEachFeature
         }).addTo(mymap);
-        function onEachFeature(feature, layer) {
-                    if (feature.properties && feature.properties.popupContent) {
-                        layer.bindPopup(feature.properties.popupContent);
-                    }
-                }
+    
                 var myLayer = L.geoJSON().addTo(mymap);
                 myLayer.addData(magasins);
                 L.geoJSON(magasins, {
                     onEachFeature: onEachFeature
                 }).addTo(mymap).on('click', function(e) {
-                console.log(e.latlng);
+                    hide = !hide; // partie du coté
+                    if (!hide){ // visible
+                        $('#mapid').removeClass("col-12");
+                        $('#mapid').addClass("col-6");
+                        sidemaps.show();
+                        console.log(e.latlng);
+                    }else{ // caché
+                        sidemaps.hide();
+                        $('#mapid').removeClass("col-6");
+                        $('#mapid').addClass("col-12");
+                    }
+             ;
 });               
             </script>
  </div>
 </div>
 </section>
+
