@@ -2,7 +2,7 @@
 <body>
 <div class="container col-12" id="mapside">
 <div class="row">
-<a name="" id="lol" class="btn btn-primary left ml-4" href="./index.php" role="button"><</a> <h1 class="title" >Votre magasin</h1>
+<a name="" id="lol" class="far fa-arrow-alt-to-left" class="btn btn-primary left ml-4" href="./index.php" role="button"><</a> <h1 class="title" >Votre magasin</h1>
 </div>
 <br><br>
  <div>
