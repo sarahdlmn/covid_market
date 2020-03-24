@@ -5,7 +5,7 @@ require 'maps-side.php';
 <div id="mapid" class="col-12">
 <script language="javascript" >
         var sidemaps = $('#mapside');
-        sidemaps.hide()
+        sidemaps.hide();
         var hide = true;
 
     var magasins = [{
