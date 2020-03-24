@@ -4,7 +4,8 @@ require './header-dashboard.php';
 <script src="../assets/js/stock.js" charset="utf-8"></script>
 
 <form method="POST" action="#">
-  <select id="category" class="form-control">
+<h3 class="text-center">Categories : </h3>
+  <select id="category" class="form-control mb-1 mt-1">
   <?php
 require './pdo_connexion.php';
 // remplissage du select avec requete sql
