@@ -1,24 +1,26 @@
 <?php
+session_start();
 function db_connexion(bool $debug=false)
 {
     // Connexion à la base de donnée.
-    $pdo = new PDO('mysql:host=localhost:3308;dbname=epiz_25324985_recyclune;charset=utf8', 'root', '');
+    include '../../dashboard/pdo_connexion.php';
 
     // Activation du debugage de PDO.
     if ($debug === true) {
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     // Renvoi de la resource de connexion.
-    return $pdo;
+    return $bdd;
 }
 
-function get_product_by_id(int $id)
+function get_product_by_id(int $categorie_id, int $magasin_id)
 {
     $pdo = db_connexion(true);
 
-    $statment = $pdo->prepare("SELECT id_produit, nom_produit, quantite FROM produit WHERE id_categorie = :id");
-    $statment->bindParam('id', $id, PDO::PARAM_INT);
+    $statment = $pdo->prepare("SELECT produit.nom_produit, a_produit_magasin.quantite FROM produit INNER JOIN a_produit_magasin ON a_produit_magasin.id_produit = produit.id_produit INNER JOIN magasin ON magasin.id_magasin = a_produit_magasin.id_magasin AND a_produit_magasin.id_magasin = magasin.id_magasin WHERE produit.id_categorie = :id_categorie AND magasin.id_magasin = :id_magasin");
+    $statment->bindParam('id_categorie', $categorie_id, PDO::PARAM_INT);
+    $statment->bindParam('id_magasin', $magasin_id, PDO::PARAM_INT);
     $statment->execute();
     return $statment->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -38,13 +40,18 @@ function set_product_by_name(array $input) {
     if (isset($input['nom']) && isset($input['quantite']) && $input['categorie']) {
         $nom_produit = (!empty($input['nom'])) ? trim($input['nom']) : null;
         $quantite = (!empty($input['quantite'])) ? (int)trim(htmlentities($input['quantite'])) : null;
-        $id_categorie = (!empty($input['catorie']) && $input['categorie']) ? trim(htmlentities($input['categorie']))  : null;
-        $sql = "UPDATE produit SET quantite = :quantite WHERE nom_produit = :nom";
+        $id_categorie = (!empty($input['categorie']) && $input['categorie']) ? trim(htmlentities($input['categorie']))  : null;
+        $sql = "SELECT id_produit FROM produit WHERE nom_produit = :nom";
         $statment = $pdo->prepare($sql);
         $statment->bindValue('nom', $nom_produit, PDO::PARAM_STR);
-        // $statment->bindParam('categorie', $id_categorie, PDO::PARAM_INT);
+        $status = $statment->execute();
+        $id = $statment->fetch(PDO::FETCH_ASSOC);
+        $statment->closeCursor();
+
+        $sql="UPDATE a_produit_magasin SET quantite = :quantite WHERE id_produit = :id";
+        $statment = $pdo->prepare($sql);
         $statment->bindValue('quantite', $quantite, PDO::PARAM_INT);
-        var_dump($nom_produit, $quantite);
+        $statment->bindValue('id', $id['id_produit'], PDO::PARAM_INT);
         $status = $statment->execute();
 
         if ($status) {
@@ -58,7 +65,7 @@ function set_product_by_name(array $input) {
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $produits = get_product_by_id($_GET['id']);
+    $produits = get_product_by_id($_GET['id_categorie'], $_SESSION['identifiant']);
     $produits = json_encode($produits);
     exit($produits);
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
