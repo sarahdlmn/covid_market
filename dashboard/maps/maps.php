@@ -1,6 +1,4 @@
-<?
-session_destroy(); 
-?>
+
 <section class="col-12"> 
 <div id="mapid" class="col-12">
 <script language="javascript" >
