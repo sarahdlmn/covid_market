@@ -41,7 +41,9 @@ if ( !empty( $_POST['mail'] ) ) {
                                     $sql="INSERT INTO `a_produit_magasin`(`id_produit`, `id_magasin`, `quantite`) VALUES (".$listeproduits[$i]['id_produit'].",'".$idM['id_magasin']."',null)";
                             $resultat = $bdd->exec( $sql );
                             }
-                            echo 'inscription validé';
+                            session_start();
+                            $_SESSION['identifiant'] = $idM;
+                            Header("Location:../form-magasin.php");
                         }
                     } else {
                         echo 'impossible de vous inscrire';
