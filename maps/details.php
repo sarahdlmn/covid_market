@@ -1,4 +1,4 @@
-
+<script src="./assets/js/detail.js" charset="utf-8"></script>
 <body>
 <?php
 require './dashboard/pdo_connexion.php';

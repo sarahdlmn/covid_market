@@ -65,7 +65,7 @@ function productRender(produits) {
 
 $(function () {
     // Lancement d'un évenement lors de la selection d'une categorie.
-    let adresseDeBddRequete ="http://localhost/covid_market/assets/REST/bdd_requete.php";
+    let adresseDeBddRequete ="./assets/REST/bdd_requete.php";
     $('#category').on('change', function () {
         if (this.value != null) {
             // Récupération Ajax des produits liée à la catégorie.
