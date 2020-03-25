@@ -3,7 +3,7 @@ require './header-dashboard.php';
 
 require './pdo_connexion.php';
 
-$reponse = $bdd->query('SELECT * FROM magasin');
+$reponse = $bdd->query('SELECT * FROM magasin Where id_magasin='.$_SESSION['identifiant'].'');
 $donnees = $reponse->fetch();
 
 ?>
