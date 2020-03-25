@@ -8,7 +8,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+       
 
         <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -20,8 +20,9 @@
    crossorigin=""/> <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
    crossorigin=""></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-   <link rel="stylesheet" href="../assets/css/style.css">
+
    <link rel="stylesheet" href="./assets/css/style.css">
 
     <title>Covid Market</title>
