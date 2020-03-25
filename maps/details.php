@@ -1,31 +1,10 @@
 
 <body>
-<section class="container col-12">
-<div class="row">
-<a name="" id="lol" class="far fa-arrow-alt-to-left" class="btn btn-primary left ml-4" href="./index.php" role="button"><</a> <h1 class="title" >Votre magasin</h1>
-</div>
-<br><br>
- <div>
-
- <form method="POST" action="#">
-<h3 class="text-center">Categories : </h3>
-  <select id="category" class="form-control mb-1 mt-1">
-  <?php
+<?php
 require './dashboard/pdo_connexion.php';
 
-// remplissage du select avec les categories 
-$sql = "SELECT * FROM categorie";
-    $resultat = $bdd->query( $sql );
-
-    if ( !empty( $resultat ) ) {
-        while ( $ligne = $resultat->fetch( PDO::FETCH_ASSOC ) ) {
-            echo '<option  value="'.$ligne["id_categorie"].'">'.$ligne["nom_categorie"].'</option>';
-          }
-     }
-  echo '</select>';
-
-  //requete pour rechercher le magasin 
-$magasin = "SELECT id_magasin FROM magasin WHERE coordinates ='[".$_GET['lon'].",".$_GET['lat']."]'";
+//requete pour rechercher le magasin 
+$magasin = "SELECT * FROM magasin WHERE coordinates ='[".$_GET['lon'].",".$_GET['lat']."]'";
 $resultat = $bdd->query ( $magasin );
 
 $id;
@@ -44,7 +23,34 @@ if ( !empty( $resultat ) ) {
 
 ?>
 
+<section class="container col-12">
+<div class="row" >
+<a name=""  href="./index.php" role="button"  class="col-2" ><img src="./assets/img/arrow.PNG" id="lol" alt="<<<"></a>
+ <h1 class="col-8 mt-2" ><?php echo $id['name']?></h1>
+</div>
+<br><br>
+ <div>
 
+ <form method="POST" action="#">
+<h3 class="text-center">Categories : </h3>
+  <select id="category" class="form-control mb-1 mt-1">
+  <?php
+
+
+// remplissage du select avec les categories 
+$sql = "SELECT * FROM categorie";
+    $resultat = $bdd->query( $sql );
+
+    if ( !empty( $resultat ) ) {
+        while ( $ligne = $resultat->fetch( PDO::FETCH_ASSOC ) ) {
+            echo '<option  value="'.$ligne["id_categorie"].'">'.$ligne["nom_categorie"].'</option>';
+          }
+     }
+  echo '</select>';
+
+
+
+?>
 
 <div>
             <table class="table">
@@ -54,13 +60,13 @@ if ( !empty( $resultat ) ) {
                   <th>Quantité</th>
                 </tr>
               </thead>
-              <tbody id="produit_ajax">>
+              <tbody id="produit_ajax">
 
                 
 
               </tbody>
             </table>
-            <a name="" id="" class="btn btn-success" href="./dashboard.php" role="button">Retour menu</a>
+
 </div>
 </form>
 
