@@ -3,6 +3,7 @@ require '../header-dashboard.php';
 ?>
 
 <div class="mt-4">
+<!-- pour aller sur la carte -->
 <a name="" id="" class="btn btn-primary left ml-4" href="../../index.php" role="button">Retour Carte</a>
 </div>
 
