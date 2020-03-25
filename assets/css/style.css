@@ -1,1 +1,39 @@
-#mapid { height: 500px; }
+
+.texty {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    text-align: center;
+    }
+h1{ 
+    text-align: center;
+    font-weight: bold;
+    
+}
+.form-row{
+    margin-left: 10px;
+}
+#form-row{ 
+    margin-left: 10px;
+}
+#mapid { height: 450px; }
+
+
+.container{
+    width: 100%;
+}
+
+h2{
+    margin-top: 3px;
+}
+h3{
+    margin-top: 3px;
+    color: #267538;
+
+}
+
+#lol{
+    height: 50px;
+    margin-top: 10px;
+}
+

@@ -8,25 +8,25 @@ if( !empty( $_GET ) ) {
 
 
   require '../pdo_connexion.php';
-
-        $sql = "SELECT count(*) AS nombre FROM magasin WHERE (identifiant = '$identifiant' AND password = '$password') ";
+  
+// connexion magasin
+        $sql = "SELECT * FROM magasin WHERE (identifiant = '$identifiant' AND password = '$password') ";
 
         $resultat = $bdd->query( $sql );
 
         if( $resultat ) {
 
-            $membre = $resultat->fetchColumn();
+            $magasin = $resultat->fetch();
 
-            if( $membre != 1 ) {
+            if( $magasin == null) {
                 $error_message = 'Indentifiant/mot de passe incorrects';
-                $success=false;
-            } else {
-                $success=true;
-                $password = '';
-            }
+
+            } 
+
             if( empty( $error_message ) ) {
                 session_start();
                 $_SESSION['identifiant'] = $identifiant;
+                $_SESSION['nom'] = $magasin['name'];
                 header('Location: ../dashboard.php');
             }
 

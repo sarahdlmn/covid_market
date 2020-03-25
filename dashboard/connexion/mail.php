@@ -1,6 +1,7 @@
 <?php
 require '../pdo_inscription.php';
 
+// envoie du mail pour activer le compte avec un lien
     $sujet = "Activation de votre compte utilisateur";
     $message = "Pour valider votre inscription, merci de cliquer sur le lien suivant :";
     $message .= "http://" . $_SERVER["SERVER_NAME"];

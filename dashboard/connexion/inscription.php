@@ -16,6 +16,7 @@ if ( !empty( $_POST['mail'] ) ) {
             $msg_error = "e-mail déjà utilisé";
         }
         
+        //magasin inscription
         if ( !empty( $_POST ) ) {
             $nom = isset( $_POST['nom'] ) ? $_POST['nom'] : '' ;
             $identifiant = isset( $_POST['mail'] ) ? $_POST['mail'] : '' ;
@@ -26,10 +27,15 @@ if ( !empty( $_POST['mail'] ) ) {
                 if ( !empty( $nom ) && !empty( $identifiant) && !empty( $pass )) {
                     $sql = "INSERT INTO `magasin`(`name`, `popup_content`, `identifiant`, `password`) VALUES ('$nom','$nom','$identifiant','$pass')";
                     $resultat = $bdd->exec( $sql );
+
+                    // id_magasins et liste id_produits
                     if ( !empty( $resultat ) ) {
-                        $selectId='SELECT id_magasin FROM magasin ORDER BY id_magasin DESC LIMIT 1';
+
+                        $selectId='SELECT * FROM magasin ORDER BY id_magasin DESC LIMIT 1';
                         $idMag = $bdd->query($selectId);
-                        $idM = $idMag->fetch( PDO::FETCH_ASSOC );
+                        $idMT = $idMag->fetch( PDO::FETCH_ASSOC );
+                        $idM = $idMT['id_magasin'];
+
                         $sql= "SELECT * FROM produit";
                         $listeP = $bdd->query($sql);
                         if ( !empty( $listeP ) && !empty($idM)) {
@@ -41,7 +47,12 @@ if ( !empty( $_POST['mail'] ) ) {
                                     $sql="INSERT INTO `a_produit_magasin`(`id_produit`, `id_magasin`, `quantite`) VALUES (".$listeproduits[$i]['id_produit'].",'".$idM['id_magasin']."',null)";
                             $resultat = $bdd->exec( $sql );
                             }
-                            echo 'inscription validé';
+
+                            session_start();
+                            $_SESSION['identifiant'] = $idM;
+                            $_SESSION['nom'] = $idMT['name'];
+                            Header("Location:../form-magasin.php");
+
                         }
                     } else {
                         echo 'impossible de vous inscrire';
