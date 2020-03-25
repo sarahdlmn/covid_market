@@ -28,33 +28,29 @@
 //     return localStorage.setItem('produits', JSON.stringify([]));
 // }
 
-function getProductName(element)
-{
+function getProductName(element) {
     let td = $(element).parent().parent().parent().find('td');
     let nom = $(td[0]).text();
     return nom;
 };
 
-function getProductQuantity(element)
-{
+function getProductQuantity(element) {
     let td = $(element).parent().parent().parent().find('td');
     let quantite = parseInt($(element).val());
     return quantite;
 }
 
-function getProductCategorie(element)
-{
+function getProductCategorie(element) {
     let td = $(element).parent().parent().parent().find('td');
     let categorie = $('#category').val();
     return categorie;
 }
 
-function productRender(produits)
-{
+function productRender(produits) {
     // Retire les lignes du tableau de produit.
     $('#produit_ajax').empty();
 
-    produits.map ((produit) => {
+    produits.map((produit) => {
         let nom, quantite;
         let tr;
         nom = produit.nom_produit;
@@ -69,28 +65,32 @@ function productRender(produits)
 
 $(function () {
     // Lancement d'un évenement lors de la selection d'une categorie.
+    let adresseDeBddRequete ="http://localhost/covid_market/assets/REST/bdd_requete.php";
     $('#category').on('change', function () {
-        // Récupération Ajax des produits liée à la catégorie.
-        $.get('http://localhost/covid_market/assets/REST/bdd_requete.php', "id_categorie=" + this.value, function (data) {
-            let produits = JSON.parse(data);
-            // Affichage de la liste de produits.
-            productRender(produits);
+        if (this.value != null) {
+            // Récupération Ajax des produits liée à la catégorie.
+            $.get(adresseDeBddRequete, "id_categorie=" + this.value, function (data) {
+                let produits = JSON.parse(data);
+                // Affichage de la liste de produits.
+                console.log(produits);
+                productRender(produits);
 
-            // Lance un évenement lors de la modification de l'input contenant la quantité des produits.
-            $('.input-quantite').on('change', function() {
-                // Récupérations des valeurs des champs.
-                let nom = getProductName(this);
-                let quantite = getProductQuantity(this);
-                let categorie = getProductCategorie(this);
+                // Lance un évenement lors de la modification de l'input contenant la quantité des produits.
+                $('.input-quantite').on('change', function () {
+                    // Récupérations des valeurs des champs.
+                    let nom = getProductName(this);
+                    let quantite = getProductQuantity(this);
+                    let categorie = getProductCategorie(this);
 
-                // Envoi vers le serveur les informations modifiée.
-                $.post('http://localhost/covid_market/assets/REST/bdd_requete.php', {
-                    'nom': nom,
-                    'quantite': quantite,
-                    'categorie': categorie
-                }, function(data){
+                    // Envoi vers le serveur les informations modifiée.
+                    $.post(adresseDeBddRequete, {
+                        'nom': nom,
+                        'quantite': quantite,
+                        'categorie': categorie
+                    }, function (data) {
+                    });
                 });
             });
-        });
+        }
     });
 });
