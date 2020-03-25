@@ -9,14 +9,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
     <script
-		  src="https://code.jquery.com/jquery-3.4.1.min.js"
-		  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-		  crossorigin="anonymous"></script>
-
-   <link rel="stylesheet" href="./assets/css/style.css">
-   <link rel="stylesheet" href="../assets/css/style.css">
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <?php if (basename($_SERVER['SCRIPT_FILENAME']) === 'form-magasin.php'): ?>
+        <script src="../assets/js/magasin.js" charset="utf-8"></script>
+    <?php elseif (basename($_SERVER['SCRIPT_FILENAME']) === 'form-stock.php'): ?>
+        <script src="../assets/js/stock.js" charset="utf-8"></script>
+    <?php endif; ?>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <title>Covid Market</title>
 </head>
 

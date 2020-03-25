@@ -1,8 +1,32 @@
-
+<script src="./assets/js/detail.js" charset="utf-8"></script>
 <body>
+<?php
+require './dashboard/pdo_connexion.php';
+
+//requete pour rechercher le magasin 
+$magasin = "SELECT * FROM magasin WHERE coordinates ='[".$_GET['lon'].",".$_GET['lat']."]'";
+$resultat = $bdd->query ( $magasin );
+
+$id;
+if ( !empty( $resultat ) ) {
+  $id = $resultat->fetch( PDO::FETCH_ASSOC );
+  session_start();
+  $_SESSION['identifiant'] = $id;
+  
+}
+//nouvelle requete pour rechercher les produits du magasin 
+$sql_donnees = "SELECT * FROM magasin WHERE id_magasin = '".$id['id_magasin']."'";
+$resultat = $bdd->query ( $sql_donnees );
+$donnees;
+if ( !empty( $resultat ) ) {
+  $donnees = $resultat->fetch( PDO::FETCH_ASSOC );
+}
+
+?>
 <section class="container col-12">
-<div class="row">
-<a name="" id="lol" class="far fa-arrow-alt-to-left" class="btn btn-primary left ml-4" href="./index.php" role="button"><</a> <h1 class="title" >Votre magasin</h1>
+<div class="row" >
+<a name=""  href="./index.php" role="button"  class="col-2" ><img src="./assets/img/arrow.PNG" id="lol" alt="<<<"></a>
+ <h1 class="col-8 mt-2" ><?php echo $id['popup_content']?></h1>
 </div>
 <br><br>
  <div>
@@ -10,8 +34,9 @@
  <form method="POST" action="#">
 <h3 class="text-center">Categories : </h3>
   <select id="category" class="form-control mb-1 mt-1">
+  <option  value="" selected>Veuillez selectionner une catégorie</option>';
   <?php
-require './dashboard/pdo_connexion.php';
+
 
 // remplissage du select avec les categories 
 $sql = "SELECT * FROM categorie";
@@ -24,27 +49,9 @@ $sql = "SELECT * FROM categorie";
      }
   echo '</select>';
 
-  //requete pour rechercher le magasin 
-$magasin = "SELECT id_magasin FROM magasin WHERE coordinates ='[".$_GET['lon'].",".$_GET['lat']."]'";
-$resultat = $bdd->query ( $magasin );
 
-$id;
-if ( !empty( $resultat ) ) {
-  $id = $resultat->fetch( PDO::FETCH_ASSOC );
-  
-}
-//nouvelle requete pour rechercher les produits du magasin 
-$sql_donnees = "SELECT * FROM magasin WHERE id_magasin = '".$id['id_magasin']."'";
-$resultat = $bdd->query ( $sql_donnees );
-$donnees;
-if ( !empty( $resultat ) ) {
-  $donnees = $resultat->fetch( PDO::FETCH_ASSOC );
-  
-}
 
 ?>
-
-
 
 <div>
             <table class="table">
@@ -54,13 +61,13 @@ if ( !empty( $resultat ) ) {
                   <th>Quantité</th>
                 </tr>
               </thead>
-              <tbody id="produit_ajax">>
+              <tbody id="produits_list">
 
                 
 
               </tbody>
             </table>
-            <a name="" id="" class="btn btn-success" href="./dashboard.php" role="button">Retour menu</a>
+
 </div>
 </form>
 

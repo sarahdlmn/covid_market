@@ -6,28 +6,27 @@ if( !empty( $_GET ) ) {
     $identifiant    = ( !empty( $_GET['identifiant'] ) ) ? $_GET['identifiant'] : '' ;
     $password       = ( !empty( $_GET['password'] ) ) ? $_GET['password'] : '' ;
 
- 
+
   require '../pdo_connexion.php';
   
 // connexion magasin
-        $sql = "SELECT count(*) AS nombre FROM magasin WHERE (identifiant = '$identifiant' AND password = '$password') ";
+        $sql = "SELECT * FROM magasin WHERE (identifiant = '$identifiant' AND password = '$password') ";
 
         $resultat = $bdd->query( $sql );
 
         if( $resultat ) {
 
-            $membre = $resultat->fetchColumn();
+            $magasin = $resultat->fetch();
 
-            if( $membre != 1 ) {
+            if( $magasin == null) {
                 $error_message = 'Indentifiant/mot de passe incorrects';
-                $success=false;
-            } else {
-                $success=true;
-                $password = '';
+
             } 
+
             if( empty( $error_message ) ) {
                 session_start();
                 $_SESSION['identifiant'] = $identifiant;
+                $_SESSION['nom'] = $magasin['name'];
                 header('Location: ../dashboard.php');
             }
 
@@ -42,7 +41,7 @@ if( !empty( $_GET ) ) {
         <form action="" method="get">
 
 
-        <?php 
+        <?php
         if( !empty( $error_message ) ) { ?>
             <div class="error-message"> <?php echo $error_message; ?></div>
         <?php }?>

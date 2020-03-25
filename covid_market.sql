@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le : mar. 24 mars 2020 à 08:38
--- Version du serveur :  10.4.11-MariaDB
--- Version de PHP : 7.4.2
+-- Hôte : 127.0.0.1:3308
+-- Généré le :  mer. 25 mars 2020 à 13:13
+-- Version du serveur :  8.0.18
+-- Version de PHP :  7.4.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `covid_market`
+-- Base de données :  `covid_market`
 --
 
 -- --------------------------------------------------------
@@ -28,18 +28,27 @@ SET time_zone = "+00:00";
 -- Structure de la table `a_produit_magasin`
 --
 
-CREATE TABLE `a_produit_magasin` (
-  `id_produit` int(11) NOT NULL,
-  `id_magasin` int(11) NOT NULL DEFAULT 0
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `a_produit_magasin`;
+CREATE TABLE IF NOT EXISTS `a_produit_magasin` (
+  `id_produit` int(11) NOT NULL AUTO_INCREMENT,
+  `id_magasin` int(11) NOT NULL DEFAULT '0',
+  `quantite` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_produit`,`id_magasin`),
+  KEY `id_magasin` (`id_magasin`)
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `a_produit_magasin`
 --
 
-INSERT INTO `a_produit_magasin` (`id_produit`, `id_magasin`) VALUES
-(1, 1),
-(20, 1);
+INSERT INTO `a_produit_magasin` (`id_produit`, `id_magasin`, `quantite`) VALUES
+(1, 1, 5),
+(20, 1, NULL),
+(3, 1, 6),
+(4, 1, 12),
+(7, 4, NULL),
+(8, 4, NULL),
+(21, 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -47,10 +56,12 @@ INSERT INTO `a_produit_magasin` (`id_produit`, `id_magasin`) VALUES
 -- Structure de la table `categorie`
 --
 
-CREATE TABLE `categorie` (
-  `id_categorie` int(11) NOT NULL,
-  `nom_categorie` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE IF NOT EXISTS `categorie` (
+  `id_categorie` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_categorie` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_categorie`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Déchargement des données de la table `categorie`
@@ -72,24 +83,26 @@ INSERT INTO `categorie` (`id_categorie`, `nom_categorie`) VALUES
 -- Structure de la table `magasin`
 --
 
-CREATE TABLE `magasin` (
-  `id_magasin` int(11) NOT NULL,
+DROP TABLE IF EXISTS `magasin`;
+CREATE TABLE IF NOT EXISTS `magasin` (
+  `id_magasin` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `popup_content` varchar(50) DEFAULT NULL,
-  `horaire` text DEFAULT NULL,
-  `commentaires` text DEFAULT NULL,
+  `horaire` text CHARACTER SET utf8mb4,
+  `commentaires` text,
   `adresse` varchar(60) DEFAULT NULL,
   `coordinates` varchar(50) DEFAULT NULL,
   `identifiant` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+  `password` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_magasin`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Déchargement des données de la table `magasin`
 --
 
 INSERT INTO `magasin` (`id_magasin`, `name`, `popup_content`, `horaire`, `commentaires`, `adresse`, `coordinates`, `identifiant`, `password`) VALUES
-(1, 'Auchan', 'Auchan Tomblaine', 'lundi 8 - 18h\r\nmardi 8 - 18h\r\nmercredi 8 - 18h\r\njeudi 8 - 18h\r\nvendredi 8 - 18h\r\nsamedi 8 - 18h\r\ndimache 8 - 18h', 'Parking, cb accepter', 'Avenue Eugène Pottier, 54510 Tomblaine', '[6.221531,48.686275]', '1', '1'),
+(1, 'Auchan ', 'Auchan Tomblaine', NULL, NULL, NULL, '[6.221531,48.686275]', '1', '1'),
 (2, 'Aldi', 'Aldi Tomblaine', NULL, NULL, NULL, '[6.219547,48.684658]', '2', '2'),
 (3, 'Auchan', 'Auchan Lobau', NULL, NULL, NULL, '[6.198744,48.680994]', '3', '3'),
 (4, 'Cora', 'Cora Essey', NULL, NULL, NULL, '[6.243782,48.703979]', '4', '4'),
@@ -106,94 +119,39 @@ INSERT INTO `magasin` (`id_magasin`, `name`, `popup_content`, `horaire`, `commen
 -- Structure de la table `produit`
 --
 
-CREATE TABLE `produit` (
-  `id_produit` int(11) NOT NULL,
+DROP TABLE IF EXISTS `produit`;
+CREATE TABLE IF NOT EXISTS `produit` (
+  `id_produit` int(11) NOT NULL AUTO_INCREMENT,
   `nom_produit` varchar(50) NOT NULL,
-  `quantite` int(11) DEFAULT NULL,
-  `id_categorie` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+  `id_categorie` int(11) NOT NULL,
+  PRIMARY KEY (`id_produit`),
+  KEY `id_categorie` (`id_categorie`)
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 ;
 
 --
 -- Déchargement des données de la table `produit`
 --
 
-INSERT INTO `produit` (`id_produit`, `nom_produit`, `quantite`, `id_categorie`) VALUES
-(1, 'Pâtes', NULL, 1),
-(2, 'Riz', NULL, 1),
-(3, 'Conserves de légumes', NULL, 1),
-(4, 'Conserves de viande', NULL, 1),
-(9, 'Sacs poubelle', NULL, 3),
-(7, 'Savons', NULL, 2),
-(8, 'Dentifrice', NULL, 2),
-(10, 'Lessive', NULL, 3),
-(11, 'Pansements', NULL, 4),
-(12, 'Désinfectants', NULL, 4),
-(13, 'Eaux', NULL, 5),
-(14, 'Laits', NULL, 5),
-(15, 'Sel', NULL, 6),
-(16, 'Sucre', NULL, 6),
-(17, 'Allummettes', NULL, 7),
-(18, 'Piles AAA ', NULL, 7),
-(19, 'Pelle', NULL, 8),
-(20, 'Preservatifs', NULL, 8);
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `a_produit_magasin`
---
-ALTER TABLE `a_produit_magasin`
-  ADD PRIMARY KEY (`id_produit`,`id_magasin`),
-  ADD KEY `id_magasin` (`id_magasin`);
-
---
--- Index pour la table `categorie`
---
-ALTER TABLE `categorie`
-  ADD PRIMARY KEY (`id_categorie`);
-
---
--- Index pour la table `magasin`
---
-ALTER TABLE `magasin`
-  ADD PRIMARY KEY (`id_magasin`);
-
---
--- Index pour la table `produit`
---
-ALTER TABLE `produit`
-  ADD PRIMARY KEY (`id_produit`),
-  ADD KEY `id_categorie` (`id_categorie`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `a_produit_magasin`
---
-ALTER TABLE `a_produit_magasin`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
-
---
--- AUTO_INCREMENT pour la table `categorie`
---
-ALTER TABLE `categorie`
-  MODIFY `id_categorie` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT pour la table `magasin`
---
-ALTER TABLE `magasin`
-  MODIFY `id_magasin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT pour la table `produit`
---
-ALTER TABLE `produit`
-  MODIFY `id_produit` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+INSERT INTO `produit` (`id_produit`, `nom_produit`, `id_categorie`) VALUES
+(1, 'Pâtes', 1),
+(2, 'Riz', 1),
+(3, 'Conserves de légumes', 1),
+(4, 'Conserves de viande', 1),
+(9, 'Sacs poubelle', 3),
+(7, 'Savons', 2),
+(8, 'Dentifrice', 2),
+(10, 'Lessive', 3),
+(11, 'Pansements', 4),
+(12, 'Désinfectants', 4),
+(13, 'Eaux', 5),
+(14, 'Laits', 5),
+(15, 'Sel', 6),
+(16, 'Sucre', 6),
+(17, 'Allummettes', 7),
+(18, 'Piles AAA ', 7),
+(19, 'Pelle', 8),
+(20, 'Preservatifs', 8),
+(21, 'Raviolli', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

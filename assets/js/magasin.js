@@ -1,26 +1,61 @@
+function get_inputs_value() {
+    let magasin = {
+        'name': $('#nom').val(),
+        'popup': $('#popup').val(),
+        'horaire': $('#horaire').val(),
+        'commentaires': $('#commentaires').val(),
+        'adresse': $('#adresse').val()
+    }
+    console.log(magasin);
+    return magasin;
+}
+
+function set_magasin()
+{
+    let magasin = get_inputs_value();
+    console.log(magasin);
+    $.post('../assets/REST/magasin.php', {
+        'name': magasin['name'],
+        'popup': magasin['popup'],
+        'horaire': magasin['horaire'],
+        'commentaires': magasin['commentaires'],
+        'adresse': magasin['adresse'],
+    }, function(data){
+        console.log(data);
+        data = JSON.parse(data);
+        show_magasin_details(data);
+    });
+}
+
+function show_magasin_details(magasin)
+{
+    console.log(magasin);
+    $('#nom').val(magasin.name);
+    $('#popup').val(magasin.popup_content);
+    $('#horaire').val(magasin.horaire);
+    $('#commentaires').val(magasin.commentaires);
+    $('#adresse').val(magasin.adresse);
+}
+
 $(function () {
-    $('#name').on('change', function () {
-        $.get('../REST/bdd_requete.php', "id=" + this.value)
+    $('#nom').on('change', function() {
+        set_magasin();
     });
 
-
-    $('#popup').on('change', function () {
-        $.get('../REST/bdd_requete.php', "id=" + this.value)
-
+    $('#popup').on('change', function() {
+        set_magasin();
     });
 
-
-    $('#horaires').on('change', function () {
-        $.get('../REST/bdd_requete.php', "id=" + this.value)
+    $('#horaire').on('change', function() {
+        set_magasin();
     });
 
-    $('#comments').on('change', function () {
-        $.get('../REST/bdd_requete.php', "id=" + this.value)
+    $('#commentaires').on('change', function() {
+        set_magasin();
     });
 
-
-    $('#adress').on('change', function () {
-        $.get('../REST/bdd_requete.php', "id=" + this.value)
+    $('#adresse').on('change', function() {
+        set_magasin();
     });
 
 });
