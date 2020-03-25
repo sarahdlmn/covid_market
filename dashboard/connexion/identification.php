@@ -8,7 +8,8 @@ if( !empty( $_GET ) ) {
 
  
   require '../pdo_connexion.php';
-
+  
+// connexion magasin
         $sql = "SELECT count(*) AS nombre FROM magasin WHERE (identifiant = '$identifiant' AND password = '$password') ";
 
         $resultat = $bdd->query( $sql );
