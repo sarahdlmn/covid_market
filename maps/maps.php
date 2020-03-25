@@ -1,13 +1,7 @@
-<?php 
-require 'maps-side.php';
-?>
+
 <section class="col-12"> 
 <div id="mapid" class="col-12">
 <script language="javascript" >
-        var sidemaps = $('#mapside');
-        sidemaps.hide()
-        var hide = true;
-
     var magasins = [{
     "type":"Feature",
     "properties": {
@@ -168,18 +162,7 @@ function onEachFeature(feature, layer) {
                 L.geoJSON(magasins, {
                     onEachFeature: onEachFeature
                 }).addTo(mymap).on('click', function(e) {
-                    hide = !hide; // partie du coté
-                    if (!hide){ // visible
-                        $('#mapid').removeClass("col-12");
-                        $('#mapid').addClass("col-6");
-                        sidemaps.show();
-                        console.log(e.latlng);
-                    }else{ // caché
-                        sidemaps.hide();
-                        $('#mapid').removeClass("col-6");
-                        $('#mapid').addClass("col-12");
-                    }
-             ;
+                       window.location.replace('./index.php?lat='+e.latlng['lat']+'&lon='+e.latlng['lng']);
 });               
             </script>
  </div>
