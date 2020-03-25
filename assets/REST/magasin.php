@@ -26,22 +26,23 @@ function get_magasin(int $magasin_id)
 
 function set_magasin(array $input) {
     $pdo = db_connexion(true);
-    var_dump($_POST);
+    var_dump($input);
     if (isset($input['name']) && isset($input['popup']) && isset($input['horaire']) && isset($input['commentaires']) && isset($input['adresse'])) {
         $name = (!empty($input['name'])) ? trim($input['name']) : null;
         $popup_content = (!empty($input['popup'])) ? trim($input['popup']) : null;
-        $horraire = (!empty($input['horaire'])) ? trim($input['horraire']) : null;
+        $horaire = (!empty($input['horaire'])) ? trim($input['horaire']) : null;
         $commentaires = (!empty($input['commentaires'])) ? trim($input['commentaires']) : null;
         $adresse = (!empty($input['adresse'])) ? trim($input['adresse']) : null;
+        $id = (int)$_SESSION['identifiant'];
 
         $sql="UPDATE magasin SET name = :name, popup_content = :popup_content, horaire = :horaire, commentaires = :commentaires, adresse = :adresse WHERE id_magasin = :id";
         $statment = $pdo->prepare($sql);
         $statment->bindValue('name', $name, PDO::PARAM_STR);
         $statment->bindValue('popup_content', $popup_content, PDO::PARAM_STR);
-        $statment->bindValue('horaire', $horraire, PDO::PARAM_STR);
+        $statment->bindValue('horaire', $horaire, PDO::PARAM_STR);
         $statment->bindValue('commentaires', $commentaires, PDO::PARAM_STR);
         $statment->bindValue('adresse', $adresse, PDO::PARAM_STR);
-        $statment->bindValue('id', $_SESSION['identifiant'], PDO::PARAM_INT);
+        $statment->bindValue('id', $id, PDO::PARAM_INT);
         $status = $statment->execute();
 
         if ($status) {

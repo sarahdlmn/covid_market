@@ -2,11 +2,11 @@ function get_inputs_value() {
     let magasin = {
         'name': $('#nom').val(),
         'popup': $('#popup').val(),
-        'horaire': $('#horaire').text(),
-        'commentaires': $('#commentaires').text(),
-        'adresse': $('#adresse').text()
+        'horaire': $('#horaire').val(),
+        'commentaires': $('#commentaires').val(),
+        'adresse': $('#adresse').val()
     }
-
+    console.log(magasin);
     return magasin;
 }
 
@@ -22,6 +22,7 @@ function set_magasin()
         'adresse': magasin['adresse'],
     }, function(data){
         console.log(data);
+        data = JSON.parse(data);
         show_magasin_details(data);
     });
 }
@@ -31,9 +32,9 @@ function show_magasin_details(magasin)
     console.log(magasin);
     $('#nom').val(magasin.name);
     $('#popup').val(magasin.popup_content);
-    $('#horaire').text(magasin.horaire);
-    $('#commentaires').text(magasin.commentaires);
-    $('#adresse').text(magasin.adresse);
+    $('#horaire').val(magasin.horaire);
+    $('#commentaires').val(magasin.commentaires);
+    $('#adresse').val(magasin.adresse);
 }
 
 $(function () {
