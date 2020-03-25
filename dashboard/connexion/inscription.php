@@ -16,6 +16,7 @@ if ( !empty( $_POST['mail'] ) ) {
             $msg_error = "e-mail déjà utilisé";
         }
         
+        //magasin inscription
         if ( !empty( $_POST ) ) {
             $nom = isset( $_POST['nom'] ) ? $_POST['nom'] : '' ;
             $identifiant = isset( $_POST['mail'] ) ? $_POST['mail'] : '' ;
@@ -26,6 +27,8 @@ if ( !empty( $_POST['mail'] ) ) {
                 if ( !empty( $nom ) && !empty( $identifiant) && !empty( $pass )) {
                     $sql = "INSERT INTO `magasin`(`name`, `popup_content`, `identifiant`, `password`) VALUES ('$nom','$nom','$identifiant','$pass')";
                     $resultat = $bdd->exec( $sql );
+
+                    // id_magasins et liste id_produits
                     if ( !empty( $resultat ) ) {
                         $selectId='SELECT id_magasin FROM magasin ORDER BY id_magasin DESC LIMIT 1';
                         $idMag = $bdd->query($selectId);
