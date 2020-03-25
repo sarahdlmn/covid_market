@@ -10,6 +10,8 @@ $resultat = $bdd->query ( $magasin );
 $id;
 if ( !empty( $resultat ) ) {
   $id = $resultat->fetch( PDO::FETCH_ASSOC );
+  session_start();
+  $_SESSION['identifiant'] = $id;
   
 }
 //nouvelle requete pour rechercher les produits du magasin 
@@ -26,7 +28,7 @@ if ( !empty( $resultat ) ) {
 <section class="container col-12">
 <div class="row" >
 <a name=""  href="./index.php" role="button"  class="col-2" ><img src="./assets/img/arrow.PNG" id="lol" alt="<<<"></a>
- <h1 class="col-8 mt-2" ><?php echo $id['name']?></h1>
+ <h1 class="col-8 mt-2" ><?php echo $id['popup_content']?></h1>
 </div>
 <br><br>
  <div>
@@ -34,6 +36,7 @@ if ( !empty( $resultat ) ) {
  <form method="POST" action="#">
 <h3 class="text-center">Categories : </h3>
   <select id="category" class="form-control mb-1 mt-1">
+  <option  value="" selected>Veuillez selectionner une catégorie</option>';
   <?php
 
 
@@ -60,7 +63,7 @@ $sql = "SELECT * FROM categorie";
                   <th>Quantité</th>
                 </tr>
               </thead>
-              <tbody id="produit_ajax">
+              <tbody id="produits_list">
 
                 
 
