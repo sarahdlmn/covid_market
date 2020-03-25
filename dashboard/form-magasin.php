@@ -34,7 +34,7 @@ $donnees = $reponse->fetch();
     <div class="form-row">
      <div class="col-sm-12  col-12 col-xs-12">
       <div class="form-group row">
-        <label for="i1" class="col-xs-12 col-sm-12  col-12 col-form-label"> Nom sur la carte : </label>
+        <label for="i1" class="col-xs-12 col-sm-12  col-12 col-form-label"> Nom pour vos clients : </label>
         <div class="col-12">
         <input type='text' name='popup' id='popup' value='<?php echo $donnees['popup_content']; ?>' class="alert alert-success text-center"
                         placeholder='' /><label>

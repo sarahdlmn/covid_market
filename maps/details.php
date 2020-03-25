@@ -20,11 +20,9 @@ $resultat = $bdd->query ( $sql_donnees );
 $donnees;
 if ( !empty( $resultat ) ) {
   $donnees = $resultat->fetch( PDO::FETCH_ASSOC );
-  
 }
 
 ?>
-
 <section class="container col-12">
 <div class="row" >
 <a name=""  href="./index.php" role="button"  class="col-2" ><img src="./assets/img/arrow.PNG" id="lol" alt="<<<"></a>
