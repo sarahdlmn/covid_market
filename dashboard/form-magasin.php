@@ -2,8 +2,9 @@
 require './header-dashboard.php';
 
 require './pdo_connexion.php';
-
-$reponse = $bdd->query('SELECT * FROM magasin Where id_magasin='.$_SESSION['identifiant'].'');
+session_start();
+$id = $_SESSION['identifiant'];
+$reponse = $bdd->query('SELECT * FROM magasin Where id_magasin='.$id.'');
 $donnees = $reponse->fetch();
 
 ?>
