@@ -1,9 +1,10 @@
 <?php
 require './header-dashboard.php';
+session_start();
 ?>
 <script src="../assets/js/stock.js" charset="utf-8"></script>
-
 <form method="POST" action="#">
+<h2 class="text-center"><?= $_SESSION['nom'] ?></h2>
 <h3 class="text-center">Categories : </h3>
   <select id="category" class="form-control mb-1 mt-1">
     <option  value="" selected>Veuillez selectionner une catégorie</option>';

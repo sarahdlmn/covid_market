@@ -16,14 +16,15 @@ if( !empty( $_GET ) ) {
 
         if( $resultat ) {
 
-            $membre = $resultat->fetch();
+            $magasin = $resultat->fetch();
 
-            if( $membre == null) {
+            if( $magasin == null) {
                 $error_message = 'Indentifiant/mot de passe incorrects';
             } 
             if( empty( $error_message ) ) {
                 session_start();
                 $_SESSION['identifiant'] = $identifiant;
+                $_SESSION['nom'] = $magasin['name'];
                 header('Location: ../dashboard.php');
             }
 

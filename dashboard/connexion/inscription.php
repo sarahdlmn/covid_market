@@ -30,9 +30,10 @@ if ( !empty( $_POST['mail'] ) ) {
 
                     // id_magasins et liste id_produits
                     if ( !empty( $resultat ) ) {
-                        $selectId='SELECT id_magasin FROM magasin ORDER BY id_magasin DESC LIMIT 1';
+                        $selectId='SELECT * FROM magasin ORDER BY id_magasin DESC LIMIT 1';
                         $idMag = $bdd->query($selectId);
-                        $idM = $idMag->fetch( PDO::FETCH_ASSOC );
+                        $idMT = $idMag->fetch( PDO::FETCH_ASSOC );
+                        $idM = $idMT['id_magasin'];
                         $sql= "SELECT * FROM produit";
                         $listeP = $bdd->query($sql);
                         if ( !empty( $listeP ) && !empty($idM)) {
@@ -46,6 +47,7 @@ if ( !empty( $_POST['mail'] ) ) {
                             }
                             session_start();
                             $_SESSION['identifiant'] = $idM;
+                            $_SESSION['nom'] = $idMT['name'];
                             Header("Location:../form-magasin.php");
                         }
                     } else {

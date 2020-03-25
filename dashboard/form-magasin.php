@@ -9,7 +9,7 @@ $donnees = $reponse->fetch();
 
 ?>
  <div class="container">
-<h1 class="title" >Votre magasin</h1> 
+<h1 class="title" ><?=$_SESSION['nom']?></h1> 
 
 <br><br>
  <div>

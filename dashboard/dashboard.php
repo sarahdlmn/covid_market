@@ -1,5 +1,6 @@
 <?php 
 require 'header-dashboard.php';
+
 ?>
 <body >
 <div id="dashboard" class="text-center">
