@@ -6,6 +6,7 @@ require './header-dashboard.php';
 <form method="POST" action="#">
 <h3 class="text-center">Categories : </h3>
   <select id="category" class="form-control mb-1 mt-1">
+    <option  value="" selected>Veuillez selectionner une catégorie</option>';
   <?php
 require './pdo_connexion.php';
 // remplissage du select avec requete sql
