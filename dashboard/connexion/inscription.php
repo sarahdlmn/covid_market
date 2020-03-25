@@ -27,8 +27,22 @@ if ( !empty( $_POST['mail'] ) ) {
                     $sql = "INSERT INTO `magasin`(`name`, `popup_content`, `identifiant`, `password`) VALUES ('$nom','$nom','$identifiant','$pass')";
                     $resultat = $bdd->exec( $sql );
                     if ( !empty( $resultat ) ) {
-                        echo 'inscription ok';
-                        // header loc connexion ? ou pas ?
+                        $selectId='SELECT id_magasin FROM magasin ORDER BY id_magasin DESC LIMIT 1';
+                        $idMag = $bdd->query($selectId);
+                        $idM = $idMag->fetch( PDO::FETCH_ASSOC );
+                        $sql= "SELECT * FROM produit";
+                        $listeP = $bdd->query($sql);
+                        if ( !empty( $listeP ) && !empty($idM)) {
+                            $listeproduits = array();
+                            while ( $ligne = $listeP->fetch( PDO::FETCH_ASSOC ) ) {
+                                array_push($listeproduits,$ligne);
+                            }
+                            for ($i=0; $i <  count($listeproduits) ; $i++) { 
+                                    $sql="INSERT INTO `a_produit_magasin`(`id_produit`, `id_magasin`, `quantite`) VALUES (".$listeproduits[$i]['id_produit'].",'".$idM['id_magasin']."',null)";
+                            $resultat = $bdd->exec( $sql );
+                            }
+                            echo 'inscription validé';
+                        }
                     } else {
                         echo 'impossible de vous inscrire';
                     }
