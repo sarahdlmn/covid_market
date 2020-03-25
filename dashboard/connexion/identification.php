@@ -6,7 +6,7 @@ if( !empty( $_GET ) ) {
     $identifiant    = ( !empty( $_GET['identifiant'] ) ) ? $_GET['identifiant'] : '' ;
     $password       = ( !empty( $_GET['password'] ) ) ? $_GET['password'] : '' ;
 
- 
+
   require '../pdo_connexion.php';
   
 // connexion magasin
@@ -20,7 +20,9 @@ if( !empty( $_GET ) ) {
 
             if( $magasin == null) {
                 $error_message = 'Indentifiant/mot de passe incorrects';
+
             } 
+
             if( empty( $error_message ) ) {
                 session_start();
                 $_SESSION['identifiant'] = $identifiant;
@@ -39,7 +41,7 @@ if( !empty( $_GET ) ) {
         <form action="" method="get">
 
 
-        <?php 
+        <?php
         if( !empty( $error_message ) ) { ?>
             <div class="error-message"> <?php echo $error_message; ?></div>
         <?php }?>

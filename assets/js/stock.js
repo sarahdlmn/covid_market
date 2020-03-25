@@ -67,13 +67,13 @@ $(function () {
     // Lancement d'un évenement lors de la selection d'une categorie.
     let adresseDeBddRequete ="./assets/REST/bdd_requete.php";
     $('#category').on('change', function () {
-        if (this.value != null) {
-            // Récupération Ajax des produits liée à la catégorie.
-            $.get(adresseDeBddRequete, "id_categorie=" + this.value, function (data) {
-                let produits = JSON.parse(data);
-                // Affichage de la liste de produits.
-                console.log(produits);
-                productRender(produits);
+
+        // Récupération Ajax des produits liée à la catégorie.
+        $.get('../assets/REST/stock.php', "id_categorie=" + this.value, function (data) {
+            let produits = JSON.parse(data);
+            // Affichage de la liste de produits.
+            productRender(produits);
+
 
                 // Lance un évenement lors de la modification de l'input contenant la quantité des produits.
                 $('.input-quantite').on('change', function () {
@@ -82,15 +82,14 @@ $(function () {
                     let quantite = getProductQuantity(this);
                     let categorie = getProductCategorie(this);
 
+
                     // Envoi vers le serveur les informations modifiée.
-                    $.post(adresseDeBddRequete, {
+                    $.post('../assets/REST/stock.php', {
                         'nom': nom,
                         'quantite': quantite,
                         'categorie': categorie
-                    }, function (data) {
                     });
                 });
             });
-        }
     });
 });

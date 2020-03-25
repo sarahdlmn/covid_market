@@ -30,10 +30,12 @@ if ( !empty( $_POST['mail'] ) ) {
 
                     // id_magasins et liste id_produits
                     if ( !empty( $resultat ) ) {
+
                         $selectId='SELECT * FROM magasin ORDER BY id_magasin DESC LIMIT 1';
                         $idMag = $bdd->query($selectId);
                         $idMT = $idMag->fetch( PDO::FETCH_ASSOC );
                         $idM = $idMT['id_magasin'];
+
                         $sql= "SELECT * FROM produit";
                         $listeP = $bdd->query($sql);
                         if ( !empty( $listeP ) && !empty($idM)) {
@@ -45,10 +47,12 @@ if ( !empty( $_POST['mail'] ) ) {
                                     $sql="INSERT INTO `a_produit_magasin`(`id_produit`, `id_magasin`, `quantite`) VALUES (".$listeproduits[$i]['id_produit'].",'".$idM['id_magasin']."',null)";
                             $resultat = $bdd->exec( $sql );
                             }
+
                             session_start();
                             $_SESSION['identifiant'] = $idM;
                             $_SESSION['nom'] = $idMT['name'];
                             Header("Location:../form-magasin.php");
+
                         }
                     } else {
                         echo 'impossible de vous inscrire';
