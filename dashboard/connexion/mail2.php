@@ -18,9 +18,8 @@
 <?php
     // pour les spam
     $SpamErrorMessage="No websites URLs permitted";
-    if (preg_match("/http/i", "$prenom_nom")) {echo "SpamErrorMessage";exit();}
-    if (preg_match("/http/i", "$numero_tel")) {echo "SpamErrorMessage";exit();}
-    if (preg_match("/http/i", "$adresse_mail")) {echo "SpamErrorMessage";exit();}
+    if (preg_match("/http/i", "$expediteur")) {echo "SpamErrorMessage";exit();}
+    if (preg_match("/http/i", "$email_to")) {echo "SpamErrorMessage";exit();}
     if (preg_match("/http/i", "$message")) {echo "SpamErrorMessage";exit();}
     if ($anti_spam !=10) {echo "SpamErrorMessage";exit();}
 ?>
