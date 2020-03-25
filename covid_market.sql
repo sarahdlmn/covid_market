@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `magasin` (
 --
 
 INSERT INTO `magasin` (`id_magasin`, `name`, `popup_content`, `horaire`, `commentaires`, `adresse`, `coordinates`, `identifiant`, `password`) VALUES
-(1, 'Auchan Driver', 'Auchan Tomblaine', NULL, NULL, NULL, '[6.221531,48.686275]', '1', '1'),
+(1, 'Auchan ', 'Auchan Tomblaine', NULL, NULL, NULL, '[6.221531,48.686275]', '1', '1'),
 (2, 'Aldi', 'Aldi Tomblaine', NULL, NULL, NULL, '[6.219547,48.684658]', '2', '2'),
 (3, 'Auchan', 'Auchan Lobau', NULL, NULL, NULL, '[6.198744,48.680994]', '3', '3'),
 (4, 'Cora', 'Cora Essey', NULL, NULL, NULL, '[6.243782,48.703979]', '4', '4'),
