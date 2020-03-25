@@ -83,15 +83,13 @@ $(function () {
                     let categorie = getProductCategorie(this);
 
 
-                // Envoi vers le serveur les informations modifiée.
-                $.post('../assets/REST/stock.php', {
-                    'nom': nom,
-                    'quantite': quantite,
-                    'categorie': categorie
-                }, function(data){
-
+                    // Envoi vers le serveur les informations modifiée.
+                    $.post('../assets/REST/stock.php', {
+                        'nom': nom,
+                        'quantite': quantite,
+                        'categorie': categorie
+                    });
                 });
             });
-        }
     });
 });

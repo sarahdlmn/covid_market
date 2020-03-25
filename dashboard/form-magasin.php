@@ -3,7 +3,6 @@ session_start();
 require './header-dashboard.php';
 require './pdo_connexion.php';
 
-session_start();
 $id = $_SESSION['identifiant'];
 $reponse = $bdd->query('SELECT * FROM magasin WHERE id_magasin = \'' . $_SESSION['identifiant'] . '\'');
 $magasin = $reponse->fetch(PDO::FETCH_ASSOC);
@@ -21,7 +20,7 @@ $magasin = $reponse->fetch(PDO::FETCH_ASSOC);
         <div class="row">
         <div class="col-12">
 
-        <input type="text" id="nom" value="<?php echo $magasin['name']; ?>" class="alert alert-successtext-center" 
+        <input type="text" id="nom" value="<?php echo $magasin['name']; ?>" class="alert alert-successtext-center"
                         placeholder='Magasin' />
 
         </div>
