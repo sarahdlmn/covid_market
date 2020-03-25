@@ -56,7 +56,11 @@ function set_magasin(array $input) {
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $magasin = get_magasin($_SESSION['identifiant']);
+    if (isset($_GET['id_magasin'])) {
+        $magasin = get_magasin($_GET['id_magasin']);
+    } else {
+        $magasin = get_magasin($_SESSION['identifiant']);
+    }
     $magasin = json_encode($magasin);
     exit($magasin);
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
