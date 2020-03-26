@@ -2,8 +2,8 @@
 session_start();
 require './header-dashboard.php';
 require './pdo_connexion.php';
-
-$id = $_SESSION['identifiant'];
+var_dump($_SESSION);
+$id = $_SESSION['id_magasin'];
 $reponse = $bdd->query('SELECT * FROM magasin WHERE id_magasin = \'' . $_SESSION['id_magasin'] . '\'');
 $magasin = $reponse->fetch(PDO::FETCH_ASSOC);
 ?>
