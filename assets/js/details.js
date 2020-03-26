@@ -23,10 +23,8 @@ function get_magasin_by_id()
     $.get('./assets/Rest/magasin.php?id_magasin=' + id_magasin + '', function(data){
         $('#category').on('change', function () {
             $.get("./assets/REST/stock.php?id_categorie=" + this.value + "&id_magasin=" + id_magasin, function (data) {
-                console.log("Je suis ic");
                 let produits = JSON.parse(data);
                 // Affichage de la liste de produits.
-                console.log(produits);
                 productRender(produits);
             });
         });
@@ -35,15 +33,4 @@ function get_magasin_by_id()
 
 $(function () {
     get_magasin_by_id();
-    // // Lancement d'un évenement lors de la selection d'une categorie.
-    // let adresseDeBddRequete = "../REST/magasin.php?id_magasin=" + this.value;
-    // $('#category').on('change', function () {
-    //     // Récupération Ajax des produits liée à la catégorie.
-    //     $.get(adresseDeBddRequete, "id_categorie=" + this.value, function (data) {
-    //         let produits = JSON.parse(data);
-    //         // Affichage de la liste de produits.
-    //         console.log(produits);
-    //         productRender(produits);
-    //     });
-    // });
 });

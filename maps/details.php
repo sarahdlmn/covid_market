@@ -11,8 +11,8 @@ $id;
 if ( !empty( $resultat ) ) {
   $id = $resultat->fetch( PDO::FETCH_ASSOC );
   session_start();
-  $_SESSION['identifiant'] = $id['id_magasin'];
-  echo '<input type="hidden" value="'.$_SESSION["identifiant"].'" id="id_magasin" />';
+  $_SESSION['id_magasin'] = $id['id_magasin'];
+  echo '<input type="hidden" value="'.$_SESSION["id_magasin"].'" id="id_magasin" />';
 }
 //nouvelle requete pour rechercher les produits du magasin
 $sql_donnees = "SELECT * FROM magasin WHERE id_magasin = '".$id['id_magasin']."'";

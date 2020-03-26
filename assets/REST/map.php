@@ -1,9 +1,14 @@
 <?php
 session_start();
 
+/**
+ * Renvoi une instance de la classe PDO.
+ *
+ * @return PDO
+ */
 function db_connexion(bool $debug=false)
 {
-    // Connexion à la base de donnée.
+    // Inclusion de la connexion à la base de donnée.
     include '../../dashboard/pdo_connexion.php';
 
     // Activation du debugage de PDO.
@@ -15,20 +20,36 @@ function db_connexion(bool $debug=false)
     return $bdd;
 }
 
+/**
+ * Modifie les coordonnées d'un magasin.
+ * @param float $long Longitute du magasin.
+ * @param float $lat Latitude du magasin.
+ *
+ * @return void
+ */
 function set_coord(float $long, float $lat)
 {
-    $coord = '['.$long.','.$lat.']';
-    $id = $_SESSION['identifiant'];
+    // Formatage des coordonnée pour enregistrement dans la base de donnée.
+    $coord = '[' . $long . ',' . $lat . ']';
+    $id = (int)$_SESSION['id_magasin'];
 
+    // Connexion à la base de donnée.
     $db = db_connexion(true);
-    $sql = "UPDATE magasin SET coordinates = :coordinates WHERE id_magasin = :id";
-    $statment = $db->prepare($sql);
+
+    // Modification des coordonées du magasin actuellement connecté.
+    $statment = $db->prepare(
+        "UPDATE magasin SET coordinates = :coordinates WHERE id_magasin = :id"
+    );
     $statment->bindValue('coordinates', $coord, PDO::PARAM_STR);
     $statment->bindValue('id', $id, PDO::PARAM_INT);
     $status = $statment->execute();
 }
 
-var_dump($_POST);
+// Vérifie si des informations ont été transmise en POST.
 if (isset($_POST) && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    set_coord($_POST['long'], $_POST['lat']);
+    // Vérifie si les informations attendu on bien été reçus.
+    if (isset($_POST['long']) && isset($_POST['lat'])) {
+        // Modifie les coordonées du magasin de la session actuelle.
+        set_coord($_POST['long'], $_POST['lat']);
+    }
 }

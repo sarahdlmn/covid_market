@@ -1,3 +1,8 @@
+/**
+ * Récupèrent les informations validé
+ *
+ * @return void
+ */
 function get_inputs_value() {
     let magasin = {
         'name': $('#nom').val(),
@@ -6,10 +11,15 @@ function get_inputs_value() {
         'commentaires': $('#commentaires').val(),
         'adresse': $('#adresse').val()
     }
-    console.log(magasin);
+
     return magasin;
 }
 
+/**
+ * Modifie les informations du magasin de la session courante.
+ *
+ * @return void
+ */
 function set_magasin()
 {
     let magasin = get_inputs_value();
