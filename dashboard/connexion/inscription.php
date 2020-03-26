@@ -49,6 +49,7 @@ if ( !empty( $_POST['mail'] ) ) {
                             }
 
                             session_start();
+                            $_SESSION['id_magasin'] = $idM;
                             $_SESSION['identifiant'] = $idM;
                             $_SESSION['nom'] = $idMT['name'];
                             Header("Location:../form-magasin.php");
