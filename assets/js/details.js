@@ -1,5 +1,5 @@
 
-function productRender(produits) //les quantités ne doivent pas pouvoir être changées 
+function productRender(produits) //les quantités ne doivent pas pouvoir être changées
 {
     // Retire les lignes du tableau de produit.
     $('#produits_list').empty();
@@ -16,17 +16,21 @@ function productRender(produits) //les quantités ne doivent pas pouvoir être c
     });
 }
 
-$(function () {
-    // Lancement d'un évenement lors de la selection d'une categorie.
-    let adresseDeBddRequete ="../REST/bdd_requete.php";
-    $('#category').on('change', function () {
-        if (this.value != null) {
-            // Récupération Ajax des produits liée à la catégorie.
-            $.get(adresseDeBddRequete, "id_categorie=" + this.value, function (data) {
+function get_magasin_by_id()
+{
+    let id_magasin = $('#id_magasin').val();
+    // Récupération Ajax des produits liée à la catégorie.
+    $.get('./assets/Rest/magasin.php?id_magasin=' + id_magasin + '', function(data){
+        $('#category').on('change', function () {
+            $.get("./assets/REST/stock.php?id_categorie=" + this.value + "&id_magasin=" + id_magasin, function (data) {
                 let produits = JSON.parse(data);
                 // Affichage de la liste de produits.
-                console.log(produits);
                 productRender(produits);
+            });
         });
     });
+}
+
+$(function () {
+    get_magasin_by_id();
 });

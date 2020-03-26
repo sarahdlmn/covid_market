@@ -15,7 +15,7 @@ if ( !empty( $_POST['mail'] ) ) {
         if ( $count != 0 ) {
             $msg_error = "e-mail déjà utilisé";
         }
-        
+
         //magasin inscription
         if ( !empty( $_POST ) ) {
             $nom = isset( $_POST['nom'] ) ? $_POST['nom'] : '' ;
@@ -43,8 +43,8 @@ if ( !empty( $_POST['mail'] ) ) {
                             while ( $ligne = $listeP->fetch( PDO::FETCH_ASSOC ) ) {
                                 array_push($listeproduits,$ligne);
                             }
-                            for ($i=0; $i <  count($listeproduits) ; $i++) { 
-                                    $sql="INSERT INTO `a_produit_magasin`(`id_produit`, `id_magasin`, `quantite`) VALUES (".$listeproduits[$i]['id_produit'].",'".$idM['id_magasin']."',null)";
+                            for ($i=0; $i <  count($listeproduits) ; $i++) {
+                                    $sql="INSERT INTO `a_produit_magasin`(`id_produit`, `id_magasin`, `quantite`) VALUES (".$listeproduits[$i]['id_produit'].",'".$idM."',null)";
                             $resultat = $bdd->exec( $sql );
                             }
 
@@ -79,15 +79,15 @@ if ( !empty( $_POST['mail'] ) ) {
         <?php echo !empty( $champs_obligatoire ) ? $champs_obligatoire : '' ;?>
         <br/>
 
-        <div class="d-flex justify-content-center">   
+        <div class="d-flex justify-content-center">
             <label><input type='text' name='nom' id='nom' value='' class="alert alert-success" role="alert"
                         placeholder='Inscrire votre magasin' /><label><br/>
         </div>
-        <div class="d-flex justify-content-center">   
+        <div class="d-flex justify-content-center">
             <label><input type='text' name='mail' id='mail' value='' class="alert alert-success" role="alert"
                         placeholder='Votre mail' /><label><br/>
         </div>
-     
+
             <?php echo !empty( $mail_used ) ? $mail_used : '' ;?>
 
         <div class="d-flex justify-content-center">

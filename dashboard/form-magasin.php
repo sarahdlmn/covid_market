@@ -4,7 +4,7 @@ require './header-dashboard.php';
 require './pdo_connexion.php';
 
 $id = $_SESSION['identifiant'];
-$reponse = $bdd->query('SELECT * FROM magasin WHERE id_magasin = \'' . $_SESSION['identifiant'] . '\'');
+$reponse = $bdd->query('SELECT * FROM magasin WHERE id_magasin = \'' . $_SESSION['id_magasin'] . '\'');
 $magasin = $reponse->fetch(PDO::FETCH_ASSOC);
 ?>
 <div class="container">
