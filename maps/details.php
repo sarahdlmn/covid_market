@@ -1,9 +1,9 @@
-<script src="./assets/js/detail.js" charset="utf-8"></script>
+<script src="./assets/js/details.js" charset="utf-8"></script>
 <body>
 <?php
 require './dashboard/pdo_connexion.php';
 
-//requete pour rechercher le magasin 
+//requete pour rechercher le magasin
 $magasin = "SELECT * FROM magasin WHERE coordinates ='[".$_GET['lon'].",".$_GET['lat']."]'";
 $resultat = $bdd->query ( $magasin );
 
@@ -11,10 +11,10 @@ $id;
 if ( !empty( $resultat ) ) {
   $id = $resultat->fetch( PDO::FETCH_ASSOC );
   session_start();
-  $_SESSION['identifiant'] = $id;
-  
+  $_SESSION['id_magasin'] = $id['id_magasin'];
+  echo '<input type="hidden" value="'.$_SESSION["id_magasin"].'" id="id_magasin" />';
 }
-//nouvelle requete pour rechercher les produits du magasin 
+//nouvelle requete pour rechercher les produits du magasin
 $sql_donnees = "SELECT * FROM magasin WHERE id_magasin = '".$id['id_magasin']."'";
 $resultat = $bdd->query ( $sql_donnees );
 $donnees;
@@ -38,7 +38,7 @@ if ( !empty( $resultat ) ) {
   <?php
 
 
-// remplissage du select avec les categories 
+// remplissage du select avec les categories
 $sql = "SELECT * FROM categorie";
     $resultat = $bdd->query( $sql );
 
@@ -63,7 +63,7 @@ $sql = "SELECT * FROM categorie";
               </thead>
               <tbody id="produits_list">
 
-                
+
 
               </tbody>
             </table>
@@ -72,8 +72,8 @@ $sql = "SELECT * FROM categorie";
 </form>
 
     <form id='form' action='' method='post'>
-     
-  
+
+
     <div class="row">
     <div class="form-row">
      <div class="col-xs-12 col-sm-12 ">
@@ -86,7 +86,7 @@ $sql = "SELECT * FROM categorie";
     </div>
     </div>
     </div>
-  
+
     <div class="row">
   <div class="form-row">
      <div class="col-sm-12  col-12 col-xs-12">
@@ -99,7 +99,7 @@ $sql = "SELECT * FROM categorie";
     </div>
   </div>
   </div>
-    
+
   <div class="row">
   <div class="form-row">
      <div class="col-sm-12 col-xs-12">
@@ -117,4 +117,3 @@ $sql = "SELECT * FROM categorie";
  </div>
  </section>
 </div>
-

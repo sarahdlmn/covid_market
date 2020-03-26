@@ -8,7 +8,7 @@ if( !empty( $_GET ) ) {
 
 
   require '../pdo_connexion.php';
-  
+
 // connexion magasin
         $sql = "SELECT * FROM magasin WHERE (identifiant = '$identifiant' AND password = '$password') ";
 
@@ -21,10 +21,11 @@ if( !empty( $_GET ) ) {
             if( $magasin == null) {
                 $error_message = 'Indentifiant/mot de passe incorrects';
 
-            } 
+            }
 
             if( empty( $error_message ) ) {
                 session_start();
+                $_SESSION['id_magasin'] = $magasin['id_magasin'];
                 $_SESSION['identifiant'] = $identifiant;
                 $_SESSION['nom'] = $magasin['name'];
                 header('Location: ../dashboard.php');

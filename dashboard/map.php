@@ -9,7 +9,7 @@
 
    <div id="mapid" style="height: 200; width:500"></div>
 
-   <script > 
+   <script >
    var map = L.map('mapid').setView([48.6833, 6.2], 13);
 
    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -22,6 +22,13 @@
 }).addTo(map);
 
 map.on('click', function(ev) {
+    alert("Coordonée : " + ev.latlng);
+    $.post('../assets/REST/map.php', {
+        'lat': ev.latlng['lat'],
+        'long': ev.latlng['lng']
+    }, function(data) {
+        console.log(data);
+    });
     console.log(ev.latlng['lat']);
     console.log(ev.latlng['lng']);
 });

@@ -65,7 +65,7 @@ function set_product_by_name(array $input) {
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $produits = get_product_by_id($_GET['id_categorie'], $_SESSION['identifiant']);
+    $produits = get_product_by_id($_GET['id_categorie'], $_SESSION['id_magasin']);
     $produits = json_encode($produits);
     exit($produits);
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
