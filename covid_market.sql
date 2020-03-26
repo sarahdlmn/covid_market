@@ -153,27 +153,6 @@ CREATE TABLE IF NOT EXISTS `magasin` (
 -- Déchargement des données de la table `magasin`
 --
 
-INSERT INTO `magasin` (`id_magasin`, `name`, `popup_content`, `horaire`, `commentaires`, `adresse`, `coordinates`, `identifiant`, `password`) VALUES
-(1, 'Auchan', 'Auchan Tomblaine', 'lundi 8 - 18h
-mardi 8 - 18h
-mercredi 8 - 18h
-jeudi 8 - 18h
-vendredi 8 - 18h
-samedi 8 - 18h
-dimache 8 - 18h', 'Parking, cb accepter', 'Avenue Eugène Pottier, 54510 Tomblaine', '[6.221531,48.686275]', '1', '1'),
-(17, 'Market', 'Market', NULL, NULL, NULL, NULL, 'mail@mail.fr', 'test1'),
-(18, 'test', 'test', NULL, NULL, NULL, '[6.1935424804688,48.686994134812]', 'test', 'test'),
-(2, 'Aldi', 'Aldi Tomblaine', NULL, NULL, NULL, '[6.219547,48.684658]', '2', '2'),
-(3, 'Auchan', 'Auchan Lobau', NULL, NULL, NULL, '[6.198744,48.680994]', '3', '3'),
-(4, 'Cora', 'Cora Essey', NULL, NULL, NULL, '[6.243782,48.703979]', '4', '4'),
-(5, 'Cora', 'Cora Houdemont', NULL, NULL, NULL, '[6.185713,48.640396]', '5', '5'),
-(6, 'Lidl', 'Lidl Tomblaine', NULL, NULL, NULL, '[6.216191,48.684829]', '6', '6'),
-(7, 'Match', 'Match Saint-Max', NULL, NULL, NULL, '[6.213511,48.701634]', '7', '7'),
-(8, 'MonoPrix', 'MonoPrix Nancy Centre', NULL, NULL, NULL, '[6.181327,48.688024]', '8', '8'),
-(9, 'Carrefour', 'Carrefour Nancy', NULL, NULL, NULL, '[6.179257,48.695952]', '9', '9'),
-(10, 'Leclerc', 'Leclerc Nancy', NULL, NULL, NULL, '[6.196569,48.695001]', '10', '10'),
-(19, 'test2', 'test2', NULL, NULL, NULL, '[6.1619567871094,48.674640078584]', 'test2', 'test2');
-
 -- --------------------------------------------------------
 
 --
